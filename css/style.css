@@ -409,5 +409,29 @@ all-quizz{
     font-size: 20px;
     font-weight: 600;
 }
+ul {
+  margin: 24px 0 0 24px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.answer1, .answer2, .answer3, .answer4 {
+  font-size: 18px;
+  font-weight: 600;
+  padding: 12px 27px 16px 0;
+}
+img{
+  cursor: pointer;
+  width: 340px;
+  height: 190px;
+  padding-bottom: 10px;
+}
+.correct {
+  color: #20a83e;
+}
+.incorrect {
+  color: red;
+}
+
+
 
 /* Fim tela 2 */
