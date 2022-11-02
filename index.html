@@ -9,22 +9,199 @@
     <title>Projetão BuzzQuizz</title>
 </head>
 <body>
-    <header>BuzzQuizz</header>
-    <content>
-        <user-quizz class="no-quizz">
-            <div class="text-box">Você não criou nenhum quizz ainda :(</div>
-            <button class="create-quizz">Criar Quizz</button>
-        </user-quizz>
-        <user-quizz class="with-quizz hidden">
-            teste
-        </user-quizz>
-        <all-quizz>
-            <div class="title">Todos os Quizzes</div>
-            <quizz-container>
-                quizzes
-            </quizz-container>
-        </all-quizz>
-    </content>
+    <div class="tela3">
+        <diz class="container1 hidden">
+            <header>
+                <h1>BuzzQuizz</h1>
+            </header>
+            <main>
+                <div class="begin">
+                    <div class="title">Comece pelo começo</div>
+                    <form action="" class="basicInfo">
+                        <div class="questions">
+                            <input type="text" name="" id="" placeholder=" Título do seu quizz">
+                            <input type="text" name="" id="" placeholder=" URL da imagem do seu quizz">
+                            <input type="text" name="" id="" placeholder=" Quantidade de perguntas do quizz">
+                            <input type="text" name="" id="" placeholder=" Quantidade de níveis do quizz">
+                        </div>
+                        <button>Prosseguir para criar perguntas</button>
+                    </form>
+                </div>
+            </main>
+        </diz>
+            <diz class="container2 hidden">
+                <header>
+                    <h1>BuzzQuizz</h1>
+                </header>
+                <main>
+                    <div class="createQuestions">
+                        <div class="title">Crie suas perguntas</div>
+                        <form action="" class="basicInfo">
+                            <div class="questions">
+                                <div class="question hidden">
+                                    <h2>Pergunta 1</h2>
+                                    <img src="./images/editIcon.png" alt="">
+                                </div>
+                                <div class="questionWrapper  ">
+                                    <div class="label"><label> Pergunta 1</label></div>
+                                    <input type="text" name="" id="" placeholder="Text da pergunta">
+                                    <input type="text" name="" id="" placeholder="Cor de fundo da pergunta">
+                                    <div class="label"><label> Resposta correta</label></div>
+                                    <input type="text" name="" id="" placeholder="Resposta correta">
+                                    <input type="text" name="" id="" placeholder="URL da imagem">
+                                    <div class="label"><label>Resposta incorreta</label></div>
+                                    <input type="text" name="" id="" placeholder="Resposta incorreta 1">
+                                    <input type="text" name="" id="" placeholder="URL da imagem 1">
+                                    <br>
+                                    <input type="text" name="" id="" placeholder="Resposta incorreta 2">
+                                    <input type="text" name="" id="" placeholder="URL da imagem 2">
+                                    <br>
+                                    <input type="text" name="" id="" placeholder="Resposta incorreta 3">
+                                    <input type="text" name="" id="" placeholder="URL da imagem 3">
+                                </div>
+                            </div>
+                            <div class="questions">
+                                <div class="question">
+                                    <h2>Pergunta 2</h2>
+                                    <img src="./images/editIcon.png" alt="">
+                                </div>
+                                <div class="questionWrapper hidden">
+                                    <div class="label"><label> Pergunta 2</label></div>
+                                    <input type="text" name="" id="" placeholder="Text da pergunta">
+                                    <input type="text" name="" id="" placeholder="Cor de fundo da pergunta">
+                                    <div class="label"><label> Resposta correta</label></div>
+                                    <input type="text" name="" id="" placeholder="Resposta correta">
+                                    <input type="text" name="" id="" placeholder="URL da imagem">
+                                    <div class="label"><label>Resposta incorreta</label></div>
+                                    <input type="text" name="" id="" placeholder="Resposta incorreta 1">
+                                    <input type="text" name="" id="" placeholder="URL da imagem 1">
+                                    <br>
+                                    <input type="text" name="" id="" placeholder="Resposta incorreta 2">
+                                    <input type="text" name="" id="" placeholder="URL da imagem 2">
+                                    <br>
+                                    <input type="text" name="" id="" placeholder="Resposta incorreta 3">
+                                    <input type="text" name="" id="" placeholder="URL da imagem 3">
+                                </div>
+                            </div>
+                            <div class="questions">
+                                <div class="question">
+                                    <h2>Pergunta 3</h2>
+                                    <img src="./images/editIcon.png" alt="">
+                                </div>
+                                <div class="questionWrapper hidden">
+                                    <div class="label"><label> Pergunta 3</label></div>
+                                    <input type="text" name="" id="" placeholder="Text da pergunta">
+                                    <input type="text" name="" id="" placeholder="Cor de fundo da pergunta">
+                                    <div class="label"><label> Resposta correta</label></div>
+                                    <input type="text" name="" id="" placeholder="Resposta correta">
+                                    <input type="text" name="" id="" placeholder="URL da imagem">
+                                    <div class="label"><label>Resposta incorreta</label></div>
+                                    <input type="text" name="" id="" placeholder="Resposta incorreta 1">
+                                    <input type="text" name="" id="" placeholder="URL da imagem 1">
+                                    <br>
+                                    <input type="text" name="" id="" placeholder="Resposta incorreta 2">
+                                    <input type="text" name="" id="" placeholder="URL da imagem 2">
+                                    <br>
+                                    <input type="text" name="" id="" placeholder="Resposta incorreta 3">
+                                    <input type="text" name="" id="" placeholder="URL da imagem 3">
+                                </div>
+                            </div>
+                            <button>Prosseguir para criar níveis</button>
+                        </form>
+                    </div>
+                </main>
+            </diz>
+            <diz class="container3 hidden">
+                <header>
+                    <h1>BuzzQuizz</h1>
+                </header>
+                <main>
+                    <div class="levels">
+                        <div class="title">Agora, decida os níveis</div>
+                        <form action="" class="basicInfo">
+                            <div class="questions">
+                                <div class="question hidden">
+                                    <h2>Nível 1</h2>
+                                    <img src="./images/editIcon.png" alt="">
+                                </div>
+                                <div class="questionWrapper  ">
+                                    <div class="label"><label> Nível 3</label></div>
+                                    <input type="text" name="" id="" placeholder="Título do nível">
+                                    <input type="text" name="" id="" placeholder="% de acerto mínima">                            
+                                    <input type="text" name="" id="" placeholder="URL da imagem do nível">
+                                    <textarea name="" id="" cols="30" rows="10" placeholder="Descrição do nível"></textarea>
+                                </div>
+                            </div>
+                            <div class="questions">
+                                <div class="question ">
+                                    <h2>Nível 2</h2>
+                                    <img src="./images/editIcon.png" alt="">
+                                </div>
+                                <div class="questionWrapper  hidden">
+                                    <div class="label"><label> Nível 3</label></div>
+                                    <input type="text" name="" id="" placeholder="Título do nível">
+                                    <input type="text" name="" id="" placeholder="% de acerto mínima">                            
+                                    <input type="text" name="" id="" placeholder="URL da imagem do nível">
+                                    <textarea name="" id="" cols="30" rows="10" placeholder="Descrição do nível"></textarea>
+                                </div>
+                            </div>
+                            <div class="questions">
+                                <div class="question ">
+                                    <h2>Nível 3</h2>
+                                    <img src="./images/editIcon.png" alt="">
+                                </div>
+                                <div class="questionWrapper hidden">
+                                    <div class="label"><label> Nível 3</label></div>
+                                    <input type="text" name="" id="" placeholder="Título do nível">
+                                    <input type="text" name="" id="" placeholder="% de acerto mínima">                            
+                                    <input type="text" name="" id="" placeholder="URL da imagem do nível">
+                                    <textarea name="" id="" cols="30" rows="10" placeholder="Descrição do nível"></textarea>
+                                </div>
+                            </div>
+                            <button>Finalizar Quizz</button>
+                        </form>
+                    </div>
+                </main>
+            </diz>
+            <diz class="container4 ">
+                <header>
+                    <h1>BuzzQuizz</h1>
+                </header>
+                <main>
+                    <div class="quizzReady">
+                        <div class="title">Crie suas perguntas</div>
+                        <div class="quizzImg">
+                            <img src="https://s3-alpha-sig.figma.com/img/60f6/4bae/cb4c4e815fc36d9f0f0579a657241eba?Expires=1668384000&Signature=aHNlgJCROP4jecPYM2zCjC-K45NayfOhp-Q3-f2w8XYDScNE63DLD9dsaDerog2CfcJDZ4sn-RLxXEVbeWjslURrT~3Y5NT647U4g7kzNeE-oLWpeYqmNd4EVexsjFOLbX3y7iyQGgBCnAAajQpKCt69kwM2oK0R5NJMgQnxfn0~eEdgK~TSyS8V2NyuFn17soBpgFQ3mFp1liDUYItKre2cRt0U15j6T1OTu--WIg15Tt6nNCDkoA59OYJd-HvBAxE4tytg2O0emUJOszz~4ri5TqfcrjFW4F2gnsXjirdvVvj-kVKDTCPpIrKfqy31IfdeAW-g7r-9TNXPdWfaPQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA" alt="">
+                            <p>O quão Potterhead você é ?</p>
+                        </div>
+                            <button>Acessar Quizz</button>
+                            <p>Voltar para home</p>
+                    </div>
+                </main>
+            </diz>
+            
+        
+
+
+        <div class="tela1 hidden">
+            <header>BuzzQuizz</header>
+            <content>
+                <user-quizz class="no-quizz">
+                    <div class="text-box">Você não criou nenhum quizz ainda :(</div>
+                    <button class="create-quizz">Criar Quizz</button>
+                </user-quizz>
+                <user-quizz class="with-quizz hidden">
+                    teste
+                </user-quizz>
+                <all-quizz>
+                    <div class="title">Todos os Quizzes</div>
+                    <quizz-container>
+                        quizzes
+                    </quizz-container>
+                </all-quizz>
+            </content>
+        </div>
+    </div>
     
 
 
