@@ -8,7 +8,7 @@
 }
 
 html, body {
-    background: #E5E5E5;
+    background: #fbfafb; /* LUIS: usei color picker do chrome pra bater mais com o layout do figma */
     font-family: 'Roboto', sans-serif;
 }
 
@@ -317,3 +317,45 @@ all-quizz{
   background-color: lightgreen;
 }
 /* Início  tela 1 */
+
+
+/* Início tela 2 */
+
+.quiz-header {
+    width: 1440px;
+    height: 227px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.57), rgba(0, 0, 0, 0.57)), url(/Projetao1_BuzzQuizz/images/Rectangle42.png);
+    margin-top: 69px;
+}
+.quiz-title {
+    font-family: "Roboto";
+    font-size: 39px;
+    font-weight: 200;
+    color: #FFFFFF;
+    text-align: center;
+    padding-top: 90px;
+}
+.ques-container {
+    padding-top: 25px;
+    margin: auto;
+    margin-top: 140px;
+    width: 759px;
+    height: 676px;
+    background-color: #FFFFFF;
+}
+.ques-header {
+    width: 93%;
+    margin: auto;
+    height: 120px;
+    background-color: #434ca0;
+}
+.ques-title {
+    color: #fefeff;
+    text-align: center;
+    padding-top: 50px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+
+/* Fim tela 2 */
