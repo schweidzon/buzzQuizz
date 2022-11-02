@@ -8,7 +8,7 @@
 }
 
 html, body {
-    background: #E5E5E5;
+    background: #fbfafb; /* LUIS: usei color picker do chrome pra bater mais com o layout do figma */
     font-family: 'Roboto', sans-serif;
 }
 
@@ -249,11 +249,12 @@ body{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  font-family: 'Roboto', sans-serif;
+  background-color: #FAFAFA;
 }
 
 header{
   position: fixed;
+  z-index: 4;
 	top: 0px;
 	left: 0px;
   background-color: #EC362D;
@@ -274,6 +275,7 @@ content{
   align-items: center;
   margin-top: 130px;
   width: 1051px;
+  margin-bottom: 50px;
 }
 user-quizz{
   display: flex;
@@ -314,13 +316,105 @@ user-quizz{
   margin-bottom: 33px;
 }
 
-.hidden{
-  display: none;
-  background-color: blue;
-}
-
 all-quizz{
   width: 100%;
-  background-color: lightgreen;
 }
-/* Início  tela 1 */
+
+.with-quizz{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.addbutton{
+  margin-left: 17px;
+}
+.title-page1{
+  font-size: 20px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+}
+
+.quizz-container{
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: 340px 340px 340px;
+  grid-template-rows: auto;
+  grid-column-gap: 15px;
+  grid-row-gap: 12px;
+}
+
+.quizz-box{
+  background-color: green;
+  height: 181px;
+  width: 340px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  border-radius: 5px;
+}
+
+.quizz-title{
+  color: white;
+  font-size: 19px;
+  font-weight: 400;
+  width: 301px ;
+  position: absolute;
+	bottom: 15px;
+  z-index: 2;
+}
+
+.quizz-image{
+  width: 340px;
+  border-radius: 5px;
+}
+
+.gradient{
+  position: absolute;
+  background-image: linear-gradient(to top , black, transparent);
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+}
+/* Fim da tela 1 */
+
+/* Início tela 2 */
+
+.quiz-header {
+    width: 1440px;
+    height: 227px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.57), rgba(0, 0, 0, 0.57)), url(/Projetao1_BuzzQuizz/images/Rectangle42.png);
+    margin-top: 69px;
+}
+.quiz-title {
+    font-family: "Roboto";
+    font-size: 39px;
+    font-weight: 200;
+    color: #FFFFFF;
+    text-align: center;
+    padding-top: 90px;
+}
+.ques-container {
+    padding-top: 25px;
+    margin: auto;
+    margin-top: 140px;
+    width: 759px;
+    height: 676px;
+    background-color: #FFFFFF;
+}
+.ques-header {
+    width: 93%;
+    margin: auto;
+    height: 120px;
+    background-color: #434ca0;
+}
+.ques-title {
+    color: #fefeff;
+    text-align: center;
+    padding-top: 50px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* Fim tela 2 */

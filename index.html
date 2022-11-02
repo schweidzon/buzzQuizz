@@ -9,7 +9,65 @@
     <title>Projetão BuzzQuizz</title>
 </head>
 <body>
-    <div class="tela3">
+    <div class="tela1 hidden">
+        <header>BuzzQuizz</header>
+        <content>
+            <user-quizz class="no-quizz hidden" >
+                <div class="text-box">Você não criou nenhum quizz ainda :(</div>
+                <button class="create-quizz">Criar Quizz</button>
+            </user-quizz>
+            <user-quizz class="with-quizz ">
+                <div class="title-page1">Seus Quizzes
+                    <img src="images/addbutton.svg" alt="" class="addbutton">
+                </div>
+                <ul class="quizz-container">
+                    <li class="quizz-box">
+                        <div class="gradient"> </div>
+                        <img src="https://disneyplusbrasil.com.br/wp-content/uploads/2022/02/Os-Simpsons-Star-Plus.jpg" alt="" class="quizz-image">
+                        <div class="quizz-title">Acerte os personagens corretos dos Simpsons e prove seu amor!</div>
+                    </li>
+                    <li class="quizz-box">
+                        <div class="gradient"> </div>
+                        <img src="https://disneyplusbrasil.com.br/wp-content/uploads/2022/02/Os-Simpsons-Star-Plus.jpg" alt="" class="quizz-image">
+                        <div class="quizz-title">Acerte os personagens corretos dos Simpsons e prove seu amor!</div>
+                    </li> 
+                </ul>
+            </user-quizz>
+            <all-quizz>
+                <div class="title-page1">Todos os Quizzes</div>
+                <ul class="quizz-container">
+                    <!--<li class="quizz-box">
+                        <div class="gradient"> </div>
+                        <img src="https://disneyplusbrasil.com.br/wp-content/uploads/2022/02/Os-Simpsons-Star-Plus.jpg" alt="" class="quizz-image">
+                        <div class="quizz-title">Acerte os personagens corretos dos Simpsons e prove seu amor!</div>
+                    </li> -->
+                </ul>
+            </all-quizz>
+        </content>
+    </div>
+
+
+    <div class="tela2">
+        <header>BuzzQuizz</header>
+        
+        <div class="quiz-header">
+            <div class="quiz-title">O quão Potterhead é você?</h1>
+        </div>
+
+        <div class="ques-container">
+            <div class="ques-header">
+                <div class="ques-title">Em qual animal Olho-Tonto Moddy transfigurou Malfoy?</div>
+            </div>
+            
+            <ul class="answers">
+                
+            </ul>
+        </div>
+
+    </div>
+
+
+    <div class="tela3 hidden">
         <diz class="container1 hidden">
             <header>
                 <h1>BuzzQuizz</h1>
@@ -65,6 +123,7 @@
                 </main>
             </diz>
             <diz class="container4 hidden">
+            <diz class="container4 hidden ">
                 <header>
                     <h1>BuzzQuizz</h1>
                 </header>
@@ -80,33 +139,8 @@
                     </div>
                 </main>
             </diz>
-        </div>
-            
-        
-
-
-        <div class="tela1 hidden">
-            <header>BuzzQuizz</header>
-            <content>
-                <user-quizz class="no-quizz">
-                    <div class="text-box">Você não criou nenhum quizz ainda :(</div>
-                    <button class="create-quizz">Criar Quizz</button>
-                </user-quizz>
-                <user-quizz class="with-quizz hidden">
-                    teste
-                </user-quizz>
-                <all-quizz>
-                    <div class="title">Todos os Quizzes</div>
-                    <quizz-container>
-                        quizzes
-                    </quizz-container>
-                </all-quizz>
-            </content>
-        </div>
-   
-    
-
-
-    <script src="./script/script.js"></script>
+    </div>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script src="scripts.js"></script>
 </body>
 </html>
