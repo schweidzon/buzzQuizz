@@ -49,17 +49,18 @@
 
     <div class="tela2">
         <header>BuzzQuizz</header>
-        
+            
         <div class="quiz-header">
-            <div class="quiz-title">O quão Potterhead é você?</h1>
+            <div class="quiz-title">O quão Potterhead é você?</div>
         </div>
 
         <div class="ques-container">
             <div class="ques-header">
                 <div class="ques-title">Em qual animal Olho-Tonto Moddy transfigurou Malfoy?</div>
             </div>
-            
+                
             <ul class="ans-options">
+                    
                 <li class="answer1">
                     <img src="/Projetao1_BuzzQuizz/images/cat-sitter-felino-1280x720.jpg"><br>
                     Gatíneo
@@ -76,7 +77,7 @@
                     <img src="/Projetao1_BuzzQuizz/images/cat-sitter-felino-1280x720.jpg"><br>
                     Gatíneo
                 </li>
-                
+                    
             </ul>
         </div>
 
@@ -84,7 +85,7 @@
 
 
     <div class="tela3 hidden">
-        <diz class="container1 hidden">
+        <diz class="container1">
             <header>
                 <h1>BuzzQuizz</h1>
             </header>
@@ -93,12 +94,12 @@
                     <div class="title">Comece pelo começo</div>
                     <form action="" class="basicInfo">
                         <div class="questions">
-                            <input type="text" name="" id="" placeholder=" Título do seu quizz">
-                            <input type="text" name="" id="" placeholder=" URL da imagem do seu quizz">
-                            <input type="text" name="" id="" placeholder=" Quantidade de perguntas do quizz">
-                            <input type="text" name="" id="" placeholder=" Quantidade de níveis do quizz">
+                            <input type="text" name="" id="quizzTitle" placeholder=" Título do seu quizz">
+                            <input type="text" name="" id="quizzUrl" placeholder=" URL da imagem do seu quizz">
+                            <input type="text" name="" id="questionsQuantity" placeholder=" Quantidade de perguntas do quizz">
+                            <input type="text" name="" id="quizzLevel" placeholder=" Quantidade de níveis do quizz">
                         </div>
-                        <button>Prosseguir para criar perguntas</button>
+                        <button type="submit">Prosseguir para criar perguntas</button>
                     </form>
                 </div>
             </main>
@@ -110,76 +111,11 @@
                 <main>
                     <div class="createQuestions">
                         <div class="title">Crie suas perguntas</div>
-                        <form action="" class="basicInfo">
-                            <div class="questions">
-                                <div class="question hidden">
-                                    <h2>Pergunta 1</h2>
-                                    <img src="./images/editIcon.png" alt="">
-                                </div>
-                                <div class="questionWrapper  ">
-                                    <div class="label"><label> Pergunta 1</label></div>
-                                    <input type="text" name="" id="" placeholder="Text da pergunta">
-                                    <input type="text" name="" id="" placeholder="Cor de fundo da pergunta">
-                                    <div class="label"><label> Resposta correta</label></div>
-                                    <input type="text" name="" id="" placeholder="Resposta correta">
-                                    <input type="text" name="" id="" placeholder="URL da imagem">
-                                    <div class="label"><label>Resposta incorreta</label></div>
-                                    <input type="text" name="" id="" placeholder="Resposta incorreta 1">
-                                    <input type="text" name="" id="" placeholder="URL da imagem 1">
-                                    <br>
-                                    <input type="text" name="" id="" placeholder="Resposta incorreta 2">
-                                    <input type="text" name="" id="" placeholder="URL da imagem 2">
-                                    <br>
-                                    <input type="text" name="" id="" placeholder="Resposta incorreta 3">
-                                    <input type="text" name="" id="" placeholder="URL da imagem 3">
-                                </div>
+                        <form action="" class="basicInfo" id="form2">
+                            <div class="questionsFormQuestions">
+                                
                             </div>
-                            <div class="questions">
-                                <div class="question">
-                                    <h2>Pergunta 2</h2>
-                                    <img src="./images/editIcon.png" alt="">
-                                </div>
-                                <div class="questionWrapper hidden">
-                                    <div class="label"><label> Pergunta 2</label></div>
-                                    <input type="text" name="" id="" placeholder="Text da pergunta">
-                                    <input type="text" name="" id="" placeholder="Cor de fundo da pergunta">
-                                    <div class="label"><label> Resposta correta</label></div>
-                                    <input type="text" name="" id="" placeholder="Resposta correta">
-                                    <input type="text" name="" id="" placeholder="URL da imagem">
-                                    <div class="label"><label>Resposta incorreta</label></div>
-                                    <input type="text" name="" id="" placeholder="Resposta incorreta 1">
-                                    <input type="text" name="" id="" placeholder="URL da imagem 1">
-                                    <br>
-                                    <input type="text" name="" id="" placeholder="Resposta incorreta 2">
-                                    <input type="text" name="" id="" placeholder="URL da imagem 2">
-                                    <br>
-                                    <input type="text" name="" id="" placeholder="Resposta incorreta 3">
-                                    <input type="text" name="" id="" placeholder="URL da imagem 3">
-                                </div>
-                            </div>
-                            <div class="questions">
-                                <div class="question">
-                                    <h2>Pergunta 3</h2>
-                                    <img src="./images/editIcon.png" alt="">
-                                </div>
-                                <div class="questionWrapper hidden">
-                                    <div class="label"><label> Pergunta 3</label></div>
-                                    <input type="text" name="" id="" placeholder="Text da pergunta">
-                                    <input type="text" name="" id="" placeholder="Cor de fundo da pergunta">
-                                    <div class="label"><label> Resposta correta</label></div>
-                                    <input type="text" name="" id="" placeholder="Resposta correta">
-                                    <input type="text" name="" id="" placeholder="URL da imagem">
-                                    <div class="label"><label>Resposta incorreta</label></div>
-                                    <input type="text" name="" id="" placeholder="Resposta incorreta 1">
-                                    <input type="text" name="" id="" placeholder="URL da imagem 1">
-                                    <br>
-                                    <input type="text" name="" id="" placeholder="Resposta incorreta 2">
-                                    <input type="text" name="" id="" placeholder="URL da imagem 2">
-                                    <br>
-                                    <input type="text" name="" id="" placeholder="Resposta incorreta 3">
-                                    <input type="text" name="" id="" placeholder="URL da imagem 3">
-                                </div>
-                            </div>
+                           
                             <button>Prosseguir para criar níveis</button>
                         </form>
                     </div>
@@ -192,52 +128,18 @@
                 <main>
                     <div class="levels">
                         <div class="title">Agora, decida os níveis</div>
-                        <form action="" class="basicInfo">
-                            <div class="questions">
-                                <div class="question hidden">
-                                    <h2>Nível 1</h2>
-                                    <img src="./images/editIcon.png" alt="">
-                                </div>
-                                <div class="questionWrapper  ">
-                                    <div class="label"><label> Nível 3</label></div>
-                                    <input type="text" name="" id="" placeholder="Título do nível">
-                                    <input type="text" name="" id="" placeholder="% de acerto mínima">                            
-                                    <input type="text" name="" id="" placeholder="URL da imagem do nível">
-                                    <textarea name="" id="" cols="30" rows="10" placeholder="Descrição do nível"></textarea>
-                                </div>
+                        <form action="" class="basicInfo" id="form3">
+                            <div class="questionsFormLevels">
+                                
                             </div>
-                            <div class="questions">
-                                <div class="question ">
-                                    <h2>Nível 2</h2>
-                                    <img src="./images/editIcon.png" alt="">
-                                </div>
-                                <div class="questionWrapper  hidden">
-                                    <div class="label"><label> Nível 3</label></div>
-                                    <input type="text" name="" id="" placeholder="Título do nível">
-                                    <input type="text" name="" id="" placeholder="% de acerto mínima">                            
-                                    <input type="text" name="" id="" placeholder="URL da imagem do nível">
-                                    <textarea name="" id="" cols="30" rows="10" placeholder="Descrição do nível"></textarea>
-                                </div>
-                            </div>
-                            <div class="questions">
-                                <div class="question ">
-                                    <h2>Nível 3</h2>
-                                    <img src="./images/editIcon.png" alt="">
-                                </div>
-                                <div class="questionWrapper hidden">
-                                    <div class="label"><label> Nível 3</label></div>
-                                    <input type="text" name="" id="" placeholder="Título do nível">
-                                    <input type="text" name="" id="" placeholder="% de acerto mínima">                            
-                                    <input type="text" name="" id="" placeholder="URL da imagem do nível">
-                                    <textarea name="" id="" cols="30" rows="10" placeholder="Descrição do nível"></textarea>
-                                </div>
-                            </div>
+                            
+                            
                             <button>Finalizar Quizz</button>
                         </form>
                     </div>
                 </main>
             </diz>
-            <diz class="container4 hidden ">
+            <diz class="container4 hidden">            
                 <header>
                     <h1>BuzzQuizz</h1>
                 </header>
@@ -255,6 +157,6 @@
             </diz>
     </div>
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-	<script src="scripts.js"></script>
+	<script src="./script/script.js"></script>
 </body>
 </html>
