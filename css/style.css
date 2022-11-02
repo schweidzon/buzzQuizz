@@ -25,6 +25,7 @@ header {
     top: 0;
     left: 0;
     right: 0;
+    z-index: 2;
 }
 
 header h1 {
@@ -55,8 +56,13 @@ header h1 {
     align-items: center;
     margin-top: 27px;
     gap: 20px;
-   
     
+}
+
+.questionsFormQuestions, .questionsFormLevels {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 .basicInfo .questions, .basicInfo .questionWrapper {
     background-color: #FFFFFFFF;
@@ -81,6 +87,7 @@ header h1 {
     border: 1px solid #D1D1D1;
     border-radius: 5px;
     padding-left: 20px;
+    padding-right: 20px;
 
 }
 
@@ -115,23 +122,21 @@ textarea {
     cursor: pointer;
 }
 
+
+
 .hidden {
     display: none;
 }
 
 .label {
-    text-align: left;
     width: 100%;
-    margin-left:30px;
-    margin-top: 20px;
     font-style: normal;
     font-weight: 700;
     font-size: 20px;
     line-height: 23px;
-    
 }
 
-.question {
+.questionTitle {
     min-height: 64px;
     display: flex;
     justify-content: space-between;
@@ -140,18 +145,15 @@ textarea {
     padding-left: 20px;
     width: 100%;
     cursor: pointer;
-    
-   
-   
 }
 
-.question h2 {
+.questionTitle h2 {
     font-style: normal;
     font-weight: 700;
     font-size: 20px;
 }
 
-.question img {
+.questionTitle img {
     width: 20px;
     height: 20px;
    
@@ -165,6 +167,11 @@ textarea {
 .questionWrapper input:last-child {
     margin-bottom: 20px;
 }
+
+.questionWrapper .label {
+    margin-left: 30px;
+}
+
 
 .quizzReady  {
     text-align: center;
