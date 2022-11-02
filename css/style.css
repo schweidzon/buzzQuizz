@@ -397,6 +397,7 @@ all-quizz{
 }
 .ques-container {
     margin: auto;
+    padding-top: 24px;
     margin-top: 42px;
     width: 759px;
     height: 676px;
@@ -435,6 +436,7 @@ img{
   color: #20a83e;
 }
 .incorrect {
+  opacity: 0.2;
   color: red;
 }
 
