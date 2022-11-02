@@ -87,7 +87,7 @@ levelQuantityRender();
 
 
 function questionsQuantityRender() {    
-    for( let i = 1; i <= 1; i++) {
+    for( let i = 1; i <= 2; i++) {
         questionsFormQuestions.innerHTML  += ` <div class="questions" >
         <div class="questionTitle" onclick="closeOrOpenQuestions(this)">
             <div class="label"><label> Pergunta ${i}</label></div>
@@ -293,7 +293,7 @@ form3.addEventListener('submit', (e) => {
     
 })
 
-
+/*  
 //get all quizzes
 const promessa = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes');
 promessa.then(processarResposta);
@@ -319,3 +319,4 @@ function renderQuizz(arg1, arg2){
   </li>
   `;
 }
+*/
