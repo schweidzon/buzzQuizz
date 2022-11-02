@@ -78,3 +78,8 @@ all-quizz{
   width: 100%;
   background-color: lightgreen;
 }
+
+.title{
+  font-weight: 700;
+  font-size: 20px;
+}
