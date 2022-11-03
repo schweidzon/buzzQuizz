@@ -22,13 +22,16 @@ const container2 = document.querySelector('.container2')
 const container3 = document.querySelector('.container3')
 const container4 = document.querySelector('.container4')
 let quantidade,levelQuantity = 0;
-console.log(form3)
+console.log(form3.length)
 
 
 function closeOrOpenQuestions(element) {
     element.childNodes[3].classList.toggle('hidden')
     element.nextElementSibling.classList.toggle('hidden')
 }
+
+
+
 
 
 form1.addEventListener('submit', (e) => {
@@ -87,7 +90,7 @@ levelQuantityRender();
 
 
 function questionsQuantityRender() {    
-    for( let i = 1; i <= 2; i++) {
+    for( let i = 1; i <= 1; i++) {
         questionsFormQuestions.innerHTML  += ` <div class="questions" >
         <div class="questionTitle" onclick="closeOrOpenQuestions(this)">
             <div class="label"><label> Pergunta ${i}</label></div>
@@ -118,7 +121,7 @@ function questionsQuantityRender() {
 function levelQuantityRender() {
     
 
-    for( let i = 1; i <= 1; i++) {
+    for( let i = 1; i <= 2; i++) {
         questionsFormLevels.innerHTML  += `
          <div class="questions">
             <div class="questionTitle"  onclick="closeOrOpenQuestions(this)">
@@ -148,16 +151,21 @@ form2.addEventListener('submit', (e) => {
         console.log(questionText[i].value.length)
         if (questionText[i].value.length < 20) {
             alert(`Texto da pergunta ${i+1} deve contar no mínimo 20 caracteres`)
+            return
             
         } else {
             text = true
         }
     }
    const backgroundColor = document.querySelectorAll('#questionBackgroundColor')
+   console.log(backgroundColor)
     for(let i = 0; i < backgroundColor.length; i++) {
+        backgroundColor[i].value[0]
         console.log(backgroundColor[i].value[i])
-        if (backgroundColor[i].value[0] !== '#' && backgroundColor[i].value.length !== 7) {
+        if (backgroundColor[i].value[0] !== '#' || backgroundColor[i].value.length !== 7) {
             alert(`Cor de fundo da pergunta ${i+1} é inválido`)
+            backgroundColor[i].value = ""
+            return
             
         } else {
             background = true
@@ -167,7 +175,8 @@ form2.addEventListener('submit', (e) => {
    for(let i = 0; i < rightAnswer.length; i++) {
          console.log(rightAnswer)
          if (rightAnswer[i].value === '') {
-            alert(`O texto da resposta ${i+1} está vazio! Adicione o texto.`)
+            alert(`O texto da resposta correta da pergunta ${i+1} está vazio! Adicione o texto.`)
+            return
          } else {
             answer = true
          }
@@ -179,6 +188,8 @@ form2.addEventListener('submit', (e) => {
         console.log(url)
         if(!isValidUrl(url[i].value)) {
             alert(`A URL da resposta correta da pergunta ${i+1} é inválido`)
+            url[i].value = ""
+            return
         } else {
             rightUrl = true
         }
@@ -190,6 +201,7 @@ form2.addEventListener('submit', (e) => {
    for (let i = 0; i < incorrectAnswer.length; i++) {
         if(incorrectAnswer[i].value === '') {
             alert(`O texto da resposta incorreta ${i+1} está vazio! Adicione o texto.`)
+            return
         } else {
             incorrectAnswer1 = true
         }
@@ -201,10 +213,11 @@ form2.addEventListener('submit', (e) => {
    for (let i = 0; i < incorrectUrl.length; i++) {
         if(!isValidUrl(incorrectUrl[i].value)) {
             if (i <= 2) {     
+                count = i
                 if (count > 3) {
                     count = 1
                 }       
-                alert(`a URL da resposta incorreta ${count} da pergunta 1 é inválido`)
+                alert(`a URL da resposta incorreta ${i+1} da pergunta 1 é inválido`)
                 count++
                 
             } else if ( i > 2 && i <= 5) {
@@ -235,6 +248,8 @@ form2.addEventListener('submit', (e) => {
                 count++
 
             } 
+            incorrectUrl[i].value = ""
+            return
         }else {
             incorrectUrl1 = true
         }
@@ -248,6 +263,13 @@ form2.addEventListener('submit', (e) => {
     
 })
 
+let levels = []
+let objtest = {}
+let nivelObj = {}
+
+
+let leveltext = []
+
 form3.addEventListener('submit', (e) => {
     e.preventDefault();
     let textLevel, minHit, imgUrl, leveldescp = false;
@@ -256,14 +278,20 @@ form3.addEventListener('submit', (e) => {
     for (let i = 0; i < levelTitle.length; i ++) {
         if(levelTitle[i].value.length < 10) {
             alert(`O título do nível ${i+1} está com menos de 10 caracteres.`)
+            return
         } else {
+            leveltext.push(levelTitle[i].value)
+            console.log(leveltext)
             textLevel = true
         }
+
+
     }
     const min = document.querySelectorAll('#min')
     for (let i = 0; i < min.length; i ++) {
         if (min[i].value < 0 || min[i].value > 100) {
-            alert(`A % de acerto do nível deve estar 0 e 100`)
+            alert(`A % de acerto do nível deve estar 0 e 100`)           
+            return
         } else {
             minHit = true
         }
@@ -271,7 +299,8 @@ form3.addEventListener('submit', (e) => {
     const levelUrl = document.querySelectorAll('#levelUrl')
     for (let i = 0; i < levelUrl.length; i ++) {
         if(!isValidUrl(levelUrl[i].value)) {
-            alert(`A url do nível ${i+1} está inválida`)
+            alert(`A url do nível ${i+1} está inválida`)            
+            return
         } else {
             imgUrl = true
         }
@@ -279,19 +308,40 @@ form3.addEventListener('submit', (e) => {
     const levelDescription = document.querySelectorAll('#levelDescription')
     for (let i = 0; i < levelDescription.length; i ++) {
         if (levelDescription[i].value.length < 30) {
-            alert(`A descrição do nível ${i+1} está com menos de 30 caracteres`)
+            alert(`A descrição do nível ${i+1} está com menos de 30 caracteres`)            
+            return
+            
         } else {
             leveldescp = true
         }
         
     }
+    console.log(levelTitle[0].value)
+
+    for(let i = 0; i < levelTitle.length; i++) {
+        console.log(levelTitle[i].value)
+
+        nivelObj = {
+            title: levelTitle[i].value,
+             image: levelUrl[i].value,
+              text: levelDescription[i].value,
+               minValue: min[i].value 
+        }
+        levels.push(nivelObj)
+    }
+    
 
     if(textLevel === true && minHit === true && imgUrl === true && leveldescp=== true ) {
         container3.classList.add('hidden')
         container4.classList.remove('hidden')
+        objtest = {levels : levels}
+        console.log(levels)
+        console.log(objtest)
     }
     
 })
+
+
 
 /*  
 //get all quizzes
