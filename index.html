@@ -9,16 +9,17 @@
     <title>Projetão BuzzQuizz</title>
 </head>
 <body>
-    <div class="tela1 hidden">
+    <div class="tela1">
         <header>BuzzQuizz</header>
         <content>
-            <user-quizz class="no-quizz hidden" >
+            <user-quizz class="no-quizz hidden " >
                 <div class="text-box">Você não criou nenhum quizz ainda :(</div>
-                <button class="create-quizz">Criar Quizz</button>
+                <button class="create-quizz" onclick="addButton()">Criar Quizz</button>
             </user-quizz>
             <user-quizz class="with-quizz ">
-                <div class="title-page1">Seus Quizzes
-                    <img src="images/addbutton.svg" alt="" class="addbutton">
+                <div class="title-page1">
+                    Seus Quizzes
+                    <img src="images/addbutton.svg" alt="" class="addbutton" onclick="addButton()">
                 </div>
                 <ul class="quizz-container">
                     <li class="quizz-box">
@@ -47,7 +48,7 @@
     </div>
 
 
-    <div class="tela2">
+    <div class="tela2 hidden">
         <header>BuzzQuizz</header>
             
         <div class="quiz-header">

@@ -293,7 +293,7 @@ form3.addEventListener('submit', (e) => {
     
 })
 
-/*  
+
 //get all quizzes
 const promessa = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes');
 promessa.then(processarResposta);
@@ -319,4 +319,7 @@ function renderQuizz(arg1, arg2){
   </li>
   `;
 }
-*/
+
+function addButton(){
+    alert("botão clicado");
+}
