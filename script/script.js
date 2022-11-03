@@ -21,7 +21,9 @@ const container1 = document.querySelector('.container1')
 const container2 = document.querySelector('.container2')
 const container3 = document.querySelector('.container3')
 const container4 = document.querySelector('.container4')
+const quizzReady = document.querySelector('.quizzReady')
 let quantidade,levelQuantity = 0;
+let quizzTitleObj, quizzImageObj;
 console.log(form3.length)
 
 
@@ -29,7 +31,6 @@ function closeOrOpenQuestions(element) {
     element.childNodes[3].classList.toggle('hidden')
     element.nextElementSibling.classList.toggle('hidden')
 }
-
 
 
 
@@ -42,11 +43,15 @@ form1.addEventListener('submit', (e) => {
     const quizzLevelValue = quizzLevel.value.trim();
     quantidade = questionsQuantityValue
     levelQuantity = quizzLevelValue
+    quizzTitleObj= quizzTitleValue
+    quizzImageObj = quizzUrlValue
+
 
     if (quizzTitleValue.length < 20 || quizzTitleValue.length > 65) {
         if(quizzTitleValue.length < 20 ) {
             alert('O título deve ter mais de 20 caracteres')
             quizzTitle.value = ""
+            return
         }else  {
             alert('O título deve ter menos de 65 caracteres')
             quizzTitle.value = ""
@@ -60,17 +65,20 @@ form1.addEventListener('submit', (e) => {
     } else {
         alert('Você não digitou uma URL válida')
         quizzUrl.value = ""
+        return
     }
 
     if (questionsQuantityValue < 3 ) {
         alert('O número de preguntas deve ser no mínimo 3')
         questionsQuantity.value = ""
+        return
 
     }
 
     if (quizzLevelValue < 2 ) {
         alert('O número de níveis deve ser no mínimo 2')
         quizzLevel.value = ""
+        return
 
     }
     
@@ -79,18 +87,24 @@ form1.addEventListener('submit', (e) => {
        container1.classList.add('hidden')
        container2.classList.remove('hidden')
        questionsQuantityRender();
+       levelQuantityRender(); // mudei aqui
         
     }
+
+    
       
 })
 questionsQuantityRender();
-levelQuantityRender();
+levelQuantityRender(); //
+
+console.log(quizzTitleObj)
 
 
 
 
 function questionsQuantityRender() {    
-    for( let i = 1; i <= 1; i++) {
+    questionsFormQuestions.innerHTML = ""
+    for( let i = 1; i <= quantidade; i++) {
         questionsFormQuestions.innerHTML  += ` <div class="questions" >
         <div class="questionTitle" onclick="closeOrOpenQuestions(this)">
             <div class="label"><label> Pergunta ${i}</label></div>
@@ -120,8 +134,8 @@ function questionsQuantityRender() {
 
 function levelQuantityRender() {
     
-
-    for( let i = 1; i <= 2; i++) {
+    questionsFormLevels.innerHTML = ""
+    for( let i = 1; i <= levelQuantity; i++) {
         questionsFormLevels.innerHTML  += `
          <div class="questions">
             <div class="questionTitle"  onclick="closeOrOpenQuestions(this)">
@@ -140,6 +154,18 @@ function levelQuantityRender() {
     
 
 }
+
+let question1 =[]
+let question2 = []    
+let question3 = []
+let question4=[]
+let answer1 = []
+let answer2 =[]
+let answer3 =[]
+let answer4 = []
+let questions = []
+
+
 
 form2.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -260,13 +286,162 @@ form2.addEventListener('submit', (e) => {
         container2.classList.add('hidden')
         container3.classList.remove('hidden')
     }
+
+
+    
+
+    
+
+    for (let i = 0; i < quantidade; i++) {
+        if( i=== 0) {
+            
+            resp1 = {
+                    text: rightAnswer[i].value,
+                    image: url[i].value,
+                    isCorrectAnswer: true
+                } 
+                answer1.push(resp1)
+
+                for (let j = 0; j < 3; j++) {
+                    resp1 = 
+                    {
+                        text: incorrectAnswer[j].value,
+                        image: incorrectUrl[j].value,
+                        isCorrectAnswer: false
+                        
+                    }
+                    answer1.push(resp1)
+
+                 }
+
+        }
+        if( i=== 1) {
+            
+            resp2 = {
+                text: rightAnswer[i].value,
+                image: url[i].value,
+                isCorrectAnswer: true
+            } 
+            answer2.push(resp2)
+
+            for (let j = 3; j < 6; j++) {
+                resp2 = 
+                {
+                    text: incorrectAnswer[j].value,
+                    image: incorrectUrl[j].value,
+                    isCorrectAnswer: false
+                    
+                }
+                answer2.push(resp2)
+
+             }
+
+        }
+        if( i === 2 ) {
+            resp3 = {
+                text: rightAnswer[i].value,
+                image: url[i].value,
+                isCorrectAnswer: true
+            } 
+            answer3.push(resp3)
+
+            for (let j = 6; j < 9; j++) {
+                resp3 = 
+                {
+                    text: incorrectAnswer[j].value,
+                    image: incorrectUrl[j].value,
+                    isCorrectAnswer: false
+                    
+                }
+                answer3.push(resp3)
+
+             }
+        }
+        if( i === 3 ) {
+            resp4 = {
+                text: rightAnswer[i].value,
+                image: url[i].value,
+                isCorrectAnswer: true
+            } 
+            answer4.push(resp4)
+
+            for (let j = 9; j < 11; j++) {
+                resp4 = 
+                {
+                    text: incorrectAnswer[j].value,
+                    image: incorrectUrl[j].value,
+                    isCorrectAnswer: false
+                    
+                }
+                answer4.push(resp4)
+
+             }
+        }
+        console.log(answer1)
+
+        //respostasIncorretas.push(answers)
+
+        console.log(answer2)
+        console.log(answer3)
+    }   
+
+
+    
+
+                    // aqui colocar a quantidade de perguntas que a pessoa escolher (variavel)
+    for (let i = 0 ; i < quantidade ; i++ ) {  // loop pelas perguntas (Ex: pergunta 1, pergunta 2)
+
+        if ( i === 0) {
+            question1 = {
+                title : questionText[i].value,
+                color: backgroundColor[i].value,
+                answers: answer1
+            }
+            questions.push(question1)
+        } 
+        if ( i === 1) {
+            question2 = {
+                title : questionText[i].value,
+                color: backgroundColor[i].value,
+                answers: answer2
+            }
+            questions.push(question2)
+        } 
+         if (i === 2 ) {
+            question3 = {
+                title : questionText[i].value,
+                color: backgroundColor[i].value,
+                answers: answer3
+            }
+            questions.push(question3)
+        }
+        if ( i === 3) {
+            question4 = {
+                title : questionText[i].value,
+                color: backgroundColor[i].value,
+                answers: answer4
+            }
+            questions.push(question4)
+        }
+       
+        console.log(questions)
+    } 
+
+   
+   // for (let j = 0; i < 2*10; j++) {
+   //     answers = [{
+   //         title: rightAnswer[i].value,
+   //         image: url[i].value,
+   //         isCorrectAnswer: true
+   //     }]
+   // }
     
 })
 
 let levels = []
 let objtest = {}
 let nivelObj = {}
-
+let quizzObj = {}
 
 let leveltext = []
 
@@ -281,7 +456,7 @@ form3.addEventListener('submit', (e) => {
             return
         } else {
             leveltext.push(levelTitle[i].value)
-            console.log(leveltext)
+          
             textLevel = true
         }
 
@@ -316,34 +491,124 @@ form3.addEventListener('submit', (e) => {
         }
         
     }
-    console.log(levelTitle[0].value)
+
+    let levels = []
+    
 
     for(let i = 0; i < levelTitle.length; i++) {
         console.log(levelTitle[i].value)
+        if ( i=== 0) {
+            nivelObj = {
+                title: levelTitle[i].value,
+                 image: levelUrl[i].value,
+                  text: levelDescription[i].value,
+                   minValue: min[i].value 
+            }
+            levels.push(nivelObj)
+        }  
+        if (i === 1) {
+            nivelObj = {
+                title: levelTitle[i].value,
+                 image: levelUrl[i].value,
+                  text: levelDescription[i].value,
+                   minValue: min[i].value 
+            }
+            levels.push(nivelObj)
 
-        nivelObj = {
-            title: levelTitle[i].value,
-             image: levelUrl[i].value,
-              text: levelDescription[i].value,
-               minValue: min[i].value 
         }
-        levels.push(nivelObj)
+        if ( i === 2) {
+            nivelObj = {
+                title: levelTitle[i].value,
+                 image: levelUrl[i].value,
+                  text: levelDescription[i].value,
+                   minValue: min[i].value 
+            }
+            levels.push(nivelObj)
+
+        }
+        if ( i === 3)  {
+            nivelObj = {
+                title: levelTitle[i].value,
+                 image: levelUrl[i].value,
+                  text: levelDescription[i].value,
+                   minValue: min[i].value 
+            }
+            levels.push(nivelObj)
+
+        }
+
     }
     
 
     if(textLevel === true && minHit === true && imgUrl === true && leveldescp=== true ) {
-        container3.classList.add('hidden')
-        container4.classList.remove('hidden')
-        objtest = {levels : levels}
+       
+        quizzObj = {
+            title:quizzTitleObj,
+            image: quizzImageObj,
+            questions: questions,
+            levels : levels
+        }
+        sendQuizz();        
         console.log(levels)
-        console.log(objtest)
+        console.log(quizzObj)
     }
     
 })
 
 
 
-/*  
+function sendQuizz() {
+    const promise = axios.post('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes', quizzObj)
+    promise.then(sendQuizzSuccess)
+    promise.catch(sendQuizzError)
+}
+
+let ids = []
+
+
+function sendQuizzSuccess(response) {
+    createQuizzCover();
+    container3.classList.add('hidden')
+    container4.classList.remove('hidden')
+    console.log('Quizz criado com sucesso')
+      
+     if(localStorage.getItem('id') !== null) {
+         ids = JSON.parse(localStorage.getItem('id'))
+     }  
+
+     let novoId = response.data.id
+     console.log(novoId)
+     ids.push(novoId)
+     localStorage.setItem('id', JSON.stringify(ids))  
+    
+}
+
+function sendQuizzError() {
+    console.log('Quizz não foi criado')
+}
+
+function createQuizzCover() {
+    quizzReady.innerHTML = `
+        <div class="quizzReady">
+            <div class="title">Seu quizz está pronto!</div>
+            <div class="quizzImg">
+                <img src="${quizzImageObj}" alt="">
+                <p>${quizzTitleObj}</p>
+            </div>
+                <button>Acessar Quizz</button>
+                <p>Voltar para home</p>
+        </div>
+    `
+    
+
+}
+
+
+
+
+
+
+
 //get all quizzes
 const promessa = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes');
 promessa.then(processarResposta);
@@ -373,4 +638,6 @@ function renderQuizz(arg1, arg2){
 function addButton(){
     alert("botão clicado");
 }
-*/
+
+
+
