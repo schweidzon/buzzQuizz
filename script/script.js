@@ -587,17 +587,19 @@ function sendQuizzError() {
     console.log('Quizz não foi criado')
 }
 
+createQuizzCover()
 function createQuizzCover() {
     quizzReady.innerHTML = `
-        <div class="quizzReady">
+        
             <div class="title">Seu quizz está pronto!</div>
             <div class="quizzImg">
+                <div class="gradient"> </div>
                 <img src="${quizzImageObj}" alt="">
                 <p>${quizzTitleObj}</p>
             </div>
                 <button>Acessar Quizz</button>
                 <p>Voltar para home</p>
-        </div>
+        
     `
     
 
