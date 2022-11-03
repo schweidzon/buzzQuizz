@@ -21,6 +21,7 @@ const container1 = document.querySelector('.container1')
 const container2 = document.querySelector('.container2')
 const container3 = document.querySelector('.container3')
 const container4 = document.querySelector('.container4')
+const quizzReady = document.querySelector('.quizzReady')
 let quantidade,levelQuantity = 0;
 let quizzTitleObj, quizzImageObj;
 console.log(form3.length)
@@ -540,8 +541,7 @@ form3.addEventListener('submit', (e) => {
     
 
     if(textLevel === true && minHit === true && imgUrl === true && leveldescp=== true ) {
-        container3.classList.add('hidden')
-        container4.classList.remove('hidden')
+       
         quizzObj = {
             title:quizzTitleObj,
             image: quizzImageObj,
@@ -567,6 +567,9 @@ let ids = []
 
 
 function sendQuizzSuccess(response) {
+    createQuizzCover();
+    container3.classList.add('hidden')
+    container4.classList.remove('hidden')
     console.log('Quizz criado com sucesso')
       
      if(localStorage.getItem('id') !== null) {
@@ -580,11 +583,24 @@ function sendQuizzSuccess(response) {
     
 }
 
-
-
-
 function sendQuizzError() {
     console.log('Quizz não foi criado')
+}
+
+function createQuizzCover() {
+    quizzReady.innerHTML = `
+        <div class="quizzReady">
+            <div class="title">Seu quizz está pronto!</div>
+            <div class="quizzImg">
+                <img src="${quizzImageObj}" alt="">
+                <p>${quizzTitleObj}</p>
+            </div>
+                <button>Acessar Quizz</button>
+                <p>Voltar para home</p>
+        </div>
+    `
+    
+
 }
 
 
@@ -622,3 +638,6 @@ function renderQuizz(arg1, arg2){
 function addButton(){
     alert("botão clicado");
 }
+
+
+
