@@ -9,16 +9,17 @@
     <title>Projetão BuzzQuizz</title>
 </head>
 <body>
-    <div class="tela1 hidden">
+    <div class="tela1">
         <header>BuzzQuizz</header>
         <content>
-            <user-quizz class="no-quizz hidden" >
+            <user-quizz class="no-quizz hidden " >
                 <div class="text-box">Você não criou nenhum quizz ainda :(</div>
-                <button class="create-quizz">Criar Quizz</button>
+                <button class="create-quizz" onclick="addButton()">Criar Quizz</button>
             </user-quizz>
             <user-quizz class="with-quizz ">
-                <div class="title-page1">Seus Quizzes
-                    <img src="images/addbutton.svg" alt="" class="addbutton">
+                <div class="title-page1">
+                    Seus Quizzes
+                    <img src="images/addbutton.svg" alt="" class="addbutton" onclick="addButton()">
                 </div>
                 <ul class="quizz-container">
                     <li class="quizz-box">
@@ -48,28 +49,45 @@
 
 
     <div class="tela2 hidden">
-            <header>BuzzQuizz</header>
+        <header>BuzzQuizz</header>
             
-            <div class="quiz-header">
-                <div class="quiz-title">O quão Potterhead é você?</h1>
-            </div>
-
-            <div class="ques-container">
-                <div class="ques-header">
-                    <div class="ques-title">Em qual animal Olho-Tonto Moddy transfigurou Malfoy?</div>
-                </div>
-                
-                <ul class="answers">
-                    
-                </ul>
-            </div>
-
+        <div class="quiz-header">
+            <div class="quiz-title">O quão Potterhead é você?</div>
         </div>
+
+        <div class="ques-container">
+            <div class="ques-header">
+                <div class="ques-title">Em qual animal Olho-Tonto Moddy transfigurou Malfoy?</div>
+            </div>
+                
+            <ul class="ans-options">
+                    
+                <li class="answer1 incorrect">
+                    <img src="/Projetao1_BuzzQuizz/images/cat-sitter-felino-1280x720.jpg"><br>
+                    Gatíneo
+                </li>
+                <li class="answer2 incorrect">
+                    <img src="/Projetao1_BuzzQuizz/images/cat-sitter-felino-1280x720.jpg"><br>
+                    Gatíneo
+                </li>
+                <li class="answer3 incorrect">
+                    <img src="/Projetao1_BuzzQuizz/images/cat-sitter-felino-1280x720.jpg"><br>
+                    Gatíneo
+                </li>
+                <li class="answer4 correct">
+                    <img src="/Projetao1_BuzzQuizz/images/cat-sitter-felino-1280x720.jpg"><br>
+                    Gatíneo
+                </li>
+                    
+            </ul>
+        </div>
+
     </div>
 
 
-    <div class="tela3 ">
-        <diz class="container1 hidden">
+    
+    <div class="tela3 hidden">
+        <div class="container1">
             <header>
                 <h1>BuzzQuizz</h1>
             </header>
@@ -87,7 +105,7 @@
                     </form>
                 </div>
             </main>
-        </diz>
+        </div>
             <diz class="container2 hidden">
                 <header>
                     <h1>BuzzQuizz</h1>

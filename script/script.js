@@ -369,4 +369,8 @@ function renderQuizz(arg1, arg2){
   </li>
   `;
 }
+
+function addButton(){
+    alert("botão clicado");
+}
 */
