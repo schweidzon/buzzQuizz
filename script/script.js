@@ -707,10 +707,6 @@ function OpenQuizz(response) {
 showTela1();
 
 function backToTela1(){
-    let tela1 = document.querySelector(".tela1");
-    let tela3 = document.querySelector(".tela3");
-    tela1.classList.remove("hidden");
-    tela3.classList.add("hidden");
     showTela1();
 }
 
@@ -728,6 +724,10 @@ promessa.then(processarResposta);
 
 
 function processarResposta(resposta) {
+  let tela1 = document.querySelector(".tela1");
+  let tela3 = document.querySelector(".tela3");
+  tela1.classList.remove("hidden");
+  tela3.classList.add("hidden");
   let ul_list = document.querySelectorAll(".quizz-container");
   let ul = ul_list[ul_list.length-1];
   ul.innerHTML ="";
@@ -781,6 +781,10 @@ function userQuizz(){
 
 
 function displayUserQuizz(resposta){
+  let tela1 = document.querySelector(".tela1");
+  let tela3 = document.querySelector(".tela3");
+  tela1.classList.remove("hidden");
+  tela3.classList.add("hidden");
     let IDarr = localStorage.getItem("id");
     console.log(IDarr);
     if (IDarr == null) {
