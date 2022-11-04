@@ -832,3 +832,11 @@ function getID(elemento){
 }
 
 //js tela1 fim
+
+
+function returnHome() {
+    let tela1 = document.querySelector(".tela1");
+    let tela2 = document.querySelector(".tela2");
+    tela2.classList.add("hidden");
+    tela1.classList.remove("hidden");
+}
