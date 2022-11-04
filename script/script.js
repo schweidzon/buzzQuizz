@@ -680,8 +680,6 @@ function createQuizzCover() {
             </div>
         
     `
-    
-
 }
 
 function openCreatedQuizz() {
@@ -690,6 +688,19 @@ function openCreatedQuizz() {
     promessa.then(OpenQuizz);
 }
 
+function OpenQuizz(response) {
+    const localStorageIds = JSON.parse(localStorage.getItem('id'));
+ 
+    
+    for( let i = 0; i < response.data.length; i++) {
+      
+        let id = response.data[i].id
+        if (localStorageIds[localStorageIds.length -1] === id) {
+            alert(`abrindo quizz com id ${id}`)
+        }
+    }
+
+}
 
 
 //js tela1 inicio
@@ -708,23 +719,6 @@ function showTela1(){
     const promessa = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes');
     promessa.then(processarResposta);
 }
-
-function OpenQuizz(response) {
-    const localStorageIds = JSON.parse(localStorage.getItem('id'));
- 
-    
-    for( let i = 0; i < response.data.length; i++) {
-      
-        let id = response.data[i].id
-        if (localStorageIds[localStorageIds.length -1] === id) {
-            alert(`abrindo quizz com id ${id}`)
-        }
-    }
-
-}
-
-
-
 
 
 //get all quizzes
