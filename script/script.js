@@ -704,7 +704,7 @@ function OpenQuizz(response) {
 
 
 //js tela1 inicio
-
+showTela1();
 
 function backToTela1(){
     showTela1();
