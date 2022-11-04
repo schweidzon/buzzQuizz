@@ -704,7 +704,7 @@ function OpenQuizz(response) {
 
 
 //js tela1 inicio
-showTela1();
+
 
 function backToTela1(){
     showTela1();
@@ -724,10 +724,7 @@ promessa.then(processarResposta);
 
 
 function processarResposta(resposta) {
-  let tela1 = document.querySelector(".tela1");
-  let tela3 = document.querySelector(".tela3");
-  tela1.classList.remove("hidden");
-  tela3.classList.add("hidden");
+  
   let ul_list = document.querySelectorAll(".quizz-container");
   let ul = ul_list[ul_list.length-1];
   ul.innerHTML ="";
