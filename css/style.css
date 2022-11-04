@@ -366,6 +366,11 @@ all-quizz{
   border-radius: 5px;
 }
 
+.quizz-box:hover{
+  cursor: pointer;
+}
+
+
 .quizz-title{
   color: white;
   word-wrap: break-word;

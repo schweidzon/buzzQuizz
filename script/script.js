@@ -613,7 +613,6 @@ function createQuizzCover() {
 
 //get all quizzes
 
-
 const promessa = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes');
 promessa.then(processarResposta);
 
@@ -621,17 +620,19 @@ function processarResposta(resposta) {
   for (let i = 0; i < resposta.data.length; i++){
     let title = resposta.data[i].title;
     let image = resposta.data[i].image;
-    renderQuizz(title, image);
+    let id = resposta.data[i].id;
+    renderQuizz(title, image, id);
   }
 }
 
-function renderQuizz(arg1, arg2){
-  let title = arg1
-  let image = arg2
+function renderQuizz(arg1, arg2, arg3){
+  let title = arg1;
+  let image = arg2;
+  let id = arg3;
   const ul_list = document.querySelectorAll(".quizz-container");
   const ul = ul_list[ul_list.length-1];
   ul.innerHTML += `
-  <li class="quizz-box">
+  <li id=${id} class="quizz-box" onclick="getID(this)">
   <div class="gradient"> </div>
   <img src="${image}" alt="" class="quizz-image">
   <div class="quizz-title">${title}</div>
@@ -639,13 +640,14 @@ function renderQuizz(arg1, arg2){
   `;
 }
 
-function renderUserQuizz(arg1, arg2){
-    let title = arg1
-    let image = arg2
+function renderUserQuizz(arg1, arg2,arg3){
+    let title = arg1;
+    let image = arg2;
+    let id = arg3;
     let ul_list = document.querySelectorAll(".quizz-container");
     let ul = ul_list[0];
     ul.innerHTML += `
-    <li class="quizz-box">
+    <li id=${id} class="quizz-box" onclick="getID(this)">
     <div class="gradient"> </div>
     <img src="${image}" alt="" class="quizz-image">
     <div class="quizz-title">${title}</div>
@@ -686,10 +688,19 @@ function displayUserQuizz(resposta){
             if (id==IDarr[i]){
                 let title = resposta.data[j].title;
                 let image = resposta.data[j].image;
-                renderUserQuizz(title, image);
+                let id = resposta.data[j].id;
+                renderUserQuizz(title, image,id);
             }
         }
     }
+}
+
+function getID(elemento){
+    console.log(elemento.id);
+    let tela1 = document.querySelector(".tela1");
+    let tela2 = document.querySelector(".tela2");
+    tela1.classList.add("hidden");
+    tela2.classList.remove("hidden");
 }
 
 userQuizz();
