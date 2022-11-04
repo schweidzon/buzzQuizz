@@ -691,6 +691,7 @@ function createQuizzCover() {
 
 
 //get all quizzes
+
 const promessa = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes');
 promessa.then(processarResposta);
 
@@ -698,17 +699,19 @@ function processarResposta(resposta) {
   for (let i = 0; i < resposta.data.length; i++){
     let title = resposta.data[i].title;
     let image = resposta.data[i].image;
-    renderQuizz(title, image);
+    let id = resposta.data[i].id;
+    renderQuizz(title, image, id);
   }
 }
 
-function renderQuizz(arg1, arg2){
-  let title = arg1
-  let image = arg2
+function renderQuizz(arg1, arg2, arg3){
+  let title = arg1;
+  let image = arg2;
+  let id = arg3;
   const ul_list = document.querySelectorAll(".quizz-container");
   const ul = ul_list[ul_list.length-1];
   ul.innerHTML += `
-  <li class="quizz-box">
+  <li id=${id} class="quizz-box" onclick="getID(this)">
   <div class="gradient"> </div>
   <img src="${image}" alt="" class="quizz-image">
   <div class="quizz-title">${title}</div>
@@ -716,47 +719,70 @@ function renderQuizz(arg1, arg2){
   `;
 }
 
+function renderUserQuizz(arg1, arg2,arg3){
+    let title = arg1;
+    let image = arg2;
+    let id = arg3;
+    let ul_list = document.querySelectorAll(".quizz-container");
+    let ul = ul_list[0];
+    ul.innerHTML += `
+    <li id=${id} class="quizz-box" onclick="getID(this)">
+    <div class="gradient"> </div>
+    <img src="${image}" alt="" class="quizz-image">
+    <div class="quizz-title">${title}</div>
+    </li>
+    `;
+  }
+
 function addButton(){
-    alert("botão clicado");
+    let tela1 = document.querySelector(".tela1");
+    let tela3 = document.querySelector(".tela3");
+    tela1.classList.add("hidden");
+    tela3.classList.remove("hidden");
+}
+
+function userQuizz(){
+    let localIDs = localStorage.getItem("id");
+    if (localIDs == null) {
+        let noQuizz =  document.querySelector(".no-quizz");
+        let withQuizz =  document.querySelector(".with-quizz");
+        noQuizz.classList.remove("hidden");
+        withQuizz.classList.add("hidden");
+    } else {
+        let noQuizz =  document.querySelector(".no-quizz");
+        let withQuizz =  document.querySelector(".with-quizz");
+        noQuizz.classList.add("hidden");
+        withQuizz.classList.remove("hidden");
+        let promise = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes');
+        promise.then(displayUserQuizz);
+    }
+}
+
+function displayUserQuizz(resposta){
+    let IDarr = localStorage.getItem("id");
+    IDarr = JSON.parse(IDarr);
+    for (let i = 0; i < IDarr.length; i++){
+        for (let j = 0; j < resposta.data.length; j++){
+            let id = resposta.data[j].id;
+            if (id==IDarr[i]){
+                let title = resposta.data[j].title;
+                let image = resposta.data[j].image;
+                let id = resposta.data[j].id;
+                renderUserQuizz(title, image,id);
+            }
+        }
+    }
 }
 
 
 
 
+function getID(elemento){
+    console.log(elemento.id);
+    let tela1 = document.querySelector(".tela1");
+    let tela2 = document.querySelector(".tela2");
+    tela1.classList.add("hidden");
+    tela2.classList.remove("hidden");
+}
 
-/* if (i <= 2) {     
-                count = i
-                if (count > 3) {
-                    count = 1
-                }       
-                alert(`a URL da resposta incorreta ${i+1} da pergunta 1 é inválido`)
-                count++
-                
-            } else if ( i > 2 && i <= 5) {
-                if (count > 3) {
-                    count = 1
-                }
-                
-                alert(`a URL da resposta incorreta ${count} da pergunta 2 é inválido`)
-                count++
-            } else if (i > 5 && i <= 8 ) {
-                if (count > 3) {
-                    count = 1
-                }
-                
-                alert(`a URL da resposta incorreta ${count} da pergunta 3 é inválido`)
-                count++
-            } else if (i > 8 && i <= 11) {
-                if (count > 3) {
-                    count = 1
-                }
-                alert(`a URL da resposta incorreta ${count} da pergunta 4 é inválido`)
-                count++
-            } else if (i > 11 && i <= 14) {
-                if (count > 3) {
-                    count = 1
-                }
-                alert(`a URL da resposta incorreta ${count} da pergunta 5 é inválido`)
-                count++
-
-            }  */
+userQuizz();

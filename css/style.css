@@ -283,7 +283,7 @@ content{
 user-quizz{
   display: flex;
   justify-content: center;
-  margin-bottom: 77px;
+  margin-bottom: 48px;
 }
 
 .no-quizz{
@@ -317,6 +317,10 @@ user-quizz{
   height: 40px;
   background-color: transparent;
   margin-bottom: 33px;
+}
+
+.create-quizz:hover{
+  cursor: pointer;
 }
 
 all-quizz{
@@ -354,7 +358,6 @@ all-quizz{
 }
 
 .quizz-box{
-
   height: 181px;
   width: 340px;
   display: flex;
@@ -363,8 +366,14 @@ all-quizz{
   border-radius: 5px;
 }
 
+.quizz-box:hover{
+  cursor: pointer;
+}
+
+
 .quizz-title{
   color: white;
+  word-wrap: break-word;
   font-size: 19px;
   font-weight: 400;
   width: 301px ;
@@ -374,8 +383,11 @@ all-quizz{
 }
 
 .quizz-image{
-  width: 340px;
   border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
 }
 
 .gradient{
@@ -387,6 +399,8 @@ all-quizz{
   border-radius: 5px;
 }
 /* Fim da tela 1 */
+
+
 
 /* Início tela 2 */
 .tela2 {
