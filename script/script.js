@@ -666,21 +666,43 @@ function sendQuizzError() {
     console.log('Quizz não foi criado')
 }
 
-createQuizzCover()
+
 function createQuizzCover() {
     quizzReady.innerHTML = `
         
             <div class="title">Seu quizz está pronto!</div>
             <div class="quizzImg">
-                <div class="gradient"> </div>
+                <div class="gradient"  onclick = "openCreatedQuizz()"> </div>
                 <img src="${quizzImageObj}" alt="">
                 <p>${quizzTitleObj}</p>
             </div>
-                <button>Acessar Quizz</button>
+                <button onclick = "openCreatedQuizz()" >Acessar Quizz</button>
                 <p>Voltar para home</p>
         
     `
     
+
+}
+
+function openCreatedQuizz() {
+    const promessa = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes');
+    console.log(promessa)
+    promessa.then(OpenQuizz);
+}
+
+
+function OpenQuizz(response) {
+    const localStorageIds = JSON.parse(localStorage.getItem('id'));
+    console.log(response)
+    console.log(localStorageIds)
+    
+    for( let i = 0; i < response.data.length; i++) {
+        console.log(response.data[i].id)
+        let id = response.data[i].id
+        if (localStorageIds[localStorageIds.length -1] === id) {
+            alert(`abrindo quizz com id ${id}`)
+        }
+    }
 
 }
 
