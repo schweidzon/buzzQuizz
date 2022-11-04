@@ -12,7 +12,7 @@
     <div class="tela1 ">
         <header>BuzzQuizz</header>
         <content>
-            <user-quizz class="no-quizz " >
+            <user-quizz class="no-quizz hidden" >
                 <div class="text-box">Você não criou nenhum quizz ainda :(</div>
                 <button class="create-quizz" onclick="addButton()">Criar Quizz</button>
             </user-quizz>
@@ -121,7 +121,7 @@
 
         <div class="final-options">
             <button class="final-button">Reiniciar Quizz</button>
-            <h1>Voltar para home</h1>
+            <h1 onclick="returnHome()">Voltar para home</h1>
         </div>
 
     </div>
@@ -193,7 +193,7 @@
                     </div>
                     <div class="buttons">
                         <button onclick = "openCreatedQuizz()" >Acessar Quizz</button>
-                        <p onclick="returnHome()" >Voltar para home</p>
+                        <p onclick="backToTela1()" >Voltar para home</p>
                     </div>
                 </main>
             </diz>

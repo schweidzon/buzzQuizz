@@ -678,9 +678,8 @@ function createQuizzCover() {
                 <img src="${quizzImageObj}" alt="">
                 <p>${quizzTitleObj}</p>
             </div>
+        
     `
-    
-
 }
 
 function openCreatedQuizz() {
@@ -688,7 +687,6 @@ function openCreatedQuizz() {
     console.log(promessa)
     promessa.then(OpenQuizz);
 }
-
 
 function OpenQuizz(response) {
     const localStorageIds = JSON.parse(localStorage.getItem('id'));
@@ -705,13 +703,34 @@ function OpenQuizz(response) {
 }
 
 
+//js tela1 inicio
+showTela1();
+
+function backToTela1(){
+    showTela1();
+}
+
+function showTela1(){
+    userQuizz();
+    const promessa = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes');
+    promessa.then(processarResposta);
+}
+
 
 //get all quizzes
 
 const promessa = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes');
 promessa.then(processarResposta);
 
+
 function processarResposta(resposta) {
+  let tela1 = document.querySelector(".tela1");
+  let tela3 = document.querySelector(".tela3");
+  tela1.classList.remove("hidden");
+  tela3.classList.add("hidden");
+  let ul_list = document.querySelectorAll(".quizz-container");
+  let ul = ul_list[ul_list.length-1];
+  ul.innerHTML ="";
   for (let i = 0; i < resposta.data.length; i++){
     let title = resposta.data[i].title;
     let image = resposta.data[i].image;
@@ -724,8 +743,8 @@ function renderQuizz(arg1, arg2, arg3){
   let title = arg1;
   let image = arg2;
   let id = arg3;
-  const ul_list = document.querySelectorAll(".quizz-container");
-  const ul = ul_list[ul_list.length-1];
+  let ul_list = document.querySelectorAll(".quizz-container");
+  let ul = ul_list[ul_list.length-1];
   ul.innerHTML += `
   <li id=${id} class="quizz-box" onclick="getID(this)">
   <div class="gradient"> </div>
@@ -756,39 +775,56 @@ function addButton(){
 }
 
 function userQuizz(){
-    let localIDs = localStorage.getItem("id");
-    if (localIDs == null) {
+    let promise = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes');
+    promise.then(displayUserQuizz);
+}
+
+
+function displayUserQuizz(resposta){
+  let tela1 = document.querySelector(".tela1");
+  let tela3 = document.querySelector(".tela3");
+  tela1.classList.remove("hidden");
+  tela3.classList.add("hidden");
+    let IDarr = localStorage.getItem("id");
+    console.log(IDarr);
+    if (IDarr == null) {
         let noQuizz =  document.querySelector(".no-quizz");
         let withQuizz =  document.querySelector(".with-quizz");
         noQuizz.classList.remove("hidden");
         withQuizz.classList.add("hidden");
     } else {
-        let noQuizz =  document.querySelector(".no-quizz");
-        let withQuizz =  document.querySelector(".with-quizz");
-        noQuizz.classList.add("hidden");
-        withQuizz.classList.remove("hidden");
-        let promise = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes');
-        promise.then(displayUserQuizz);
-    }
-}
-
-function displayUserQuizz(resposta){
-    let IDarr = localStorage.getItem("id");
-    IDarr = JSON.parse(IDarr);
-    for (let i = 0; i < IDarr.length; i++){
-        for (let j = 0; j < resposta.data.length; j++){
-            let id = resposta.data[j].id;
-            if (id==IDarr[i]){
-                let title = resposta.data[j].title;
-                let image = resposta.data[j].image;
+        let ul_list = document.querySelectorAll(".quizz-container");
+        let ul = ul_list[0];
+        ul.innerHTML = "";
+        let cleanLocalStorage = true;
+        IDarr = JSON.parse(IDarr);
+        for (let i = 0; i < IDarr.length; i++){
+            for (let j = 0; j < resposta.data.length; j++){
                 let id = resposta.data[j].id;
-                renderUserQuizz(title, image,id);
+                if (id==IDarr[i]){
+                    cleanLocalStorage = false;
+                    let title = resposta.data[j].title;
+                    let image = resposta.data[j].image;
+                    let id = resposta.data[j].id;
+                    renderUserQuizz(title, image,id);
+                }
             }
         }
+        if (cleanLocalStorage){
+            localStorage.removeItem("id");
+            let noQuizz =  document.querySelector(".no-quizz");
+            let withQuizz =  document.querySelector(".with-quizz");
+            noQuizz.classList.remove("hidden");
+            withQuizz.classList.add("hidden");
+        } else {
+            let noQuizz =  document.querySelector(".no-quizz");
+            let withQuizz =  document.querySelector(".with-quizz");
+            noQuizz.classList.add("hidden");
+            withQuizz.classList.remove("hidden");
+        }
     }
+    console.log(localStorage.getItem("id"));
 }
-
-
 
 
 function getID(elemento){
@@ -799,4 +835,12 @@ function getID(elemento){
     tela2.classList.remove("hidden");
 }
 
-userQuizz();
+//js tela1 fim
+
+
+function returnHome() {
+    let tela1 = document.querySelector(".tela1");
+    let tela2 = document.querySelector(".tela2");
+    tela2.classList.add("hidden");
+    tela1.classList.remove("hidden");
+}
