@@ -24,6 +24,8 @@ const container4 = document.querySelector('.container4')
 const quizzReady = document.querySelector('.quizzReady')
 let quantidade,levelQuantity = 0;
 let quizzTitleObj, quizzImageObj;
+const tela1 = document.querySelector(".tela1");
+const tela3 = document.querySelector(".tela3");
 console.log(form3.length)
 
 
@@ -676,9 +678,6 @@ function createQuizzCover() {
                 <img src="${quizzImageObj}" alt="">
                 <p>${quizzTitleObj}</p>
             </div>
-                <button onclick = "openCreatedQuizz()" >Acessar Quizz</button>
-                <p>Voltar para home</p>
-        
     `
     
 
@@ -693,16 +692,23 @@ function openCreatedQuizz() {
 
 function OpenQuizz(response) {
     const localStorageIds = JSON.parse(localStorage.getItem('id'));
-    console.log(response)
-    console.log(localStorageIds)
+ 
     
     for( let i = 0; i < response.data.length; i++) {
-        console.log(response.data[i].id)
+      
         let id = response.data[i].id
         if (localStorageIds[localStorageIds.length -1] === id) {
             alert(`abrindo quizz com id ${id}`)
         }
     }
+
+}
+
+
+function returnHome() {
+
+    tela1.classList.remove("hidden");
+    tela3.classList.remove("add");
 
 }
 
@@ -757,8 +763,6 @@ function renderUserQuizz(arg1, arg2,arg3){
   }
 
 function addButton(){
-    let tela1 = document.querySelector(".tela1");
-    let tela3 = document.querySelector(".tela3");
     tela1.classList.add("hidden");
     tela3.classList.remove("hidden");
 }

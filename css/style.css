@@ -176,6 +176,7 @@ textarea {
 .quizzReady  {
     text-align: center;
     display: inline-block;
+    word-break: break-all;
     
     
 }
@@ -221,10 +222,15 @@ textarea {
     border: none;
     font-size: 21px;
     cursor: pointer;
+    
    
 }
 
-.quizzReady p:nth-child(4) {
+.buttons {
+  margin-top: 1em;
+}
+
+.buttons p {
     font-size: 18px;
     color:#818181 ;
     cursor: pointer;
