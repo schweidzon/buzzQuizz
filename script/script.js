@@ -545,8 +545,8 @@ form3.addEventListener('submit', (e) => {
     }
     const min = document.querySelectorAll('#min')
     for (let i = 0; i < min.length; i ++) {
-        if (min[i].value < 0 || min[i].value > 100) {
-            alert(`A % de acerto do nível deve estar 0 e 100`)           
+        if (min[i].value < 0 || min[i].value > 100 || isNaN(min[i].value)) {
+            alert(`A % de acerto do nível ${i+1} deve ser um número e estar 0 e 100`)           
             return
         } else {
             minHit = true
@@ -703,18 +703,6 @@ function OpenQuizz(response) {
     }
 
 }
-
-
-function returnHome() {
-
-    tela1.classList.remove("hidden");
-    tela3.classList.remove("add");
-
-}
-
-
-
-
 
 
 
