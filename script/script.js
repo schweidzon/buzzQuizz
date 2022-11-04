@@ -28,8 +28,20 @@ console.log(form3.length)
 
 
 function closeOrOpenQuestions(element) {
-    element.childNodes[3].classList.toggle('hidden')
-    element.nextElementSibling.classList.toggle('hidden')
+    console.log(element)
+
+    const prevOpen = document.querySelector('.open')
+    const prevCheck = document.querySelector('.questionTitle .hidden')
+
+    if ( prevOpen !== null) {
+        prevOpen.classList.add('hidden')
+        prevOpen.classList.remove('open')
+        prevCheck.classList.remove('hidden')
+    }
+
+    element.childNodes[3].classList.add('hidden')
+    element.nextElementSibling.classList.remove('hidden')
+    element.nextElementSibling.classList.add('open')
 }
 
 
@@ -105,26 +117,27 @@ console.log(quizzTitleObj)
 function questionsQuantityRender() {    
     questionsFormQuestions.innerHTML = ""
     for( let i = 1; i <= quantidade; i++) {
-        questionsFormQuestions.innerHTML  += ` <div class="questions" >
-        <div class="questionTitle" onclick="closeOrOpenQuestions(this)">
-            <div class="label"><label> Pergunta ${i}</label></div>
-            <img src="./images/editIcon.png" alt="">
-        </div>
-        <div class="questionWrapper hidden">
-            <input type="text" name="" id="questionText" placeholder="Text da pergunta">
-            <input type="text" name="" id="questionBackgroundColor" placeholder="Cor de fundo da pergunta">
-            <div class="label"><label> Resposta correta</label></div>
-            <input type="text" name="" id="rightAnswer" placeholder="Resposta correta">
-            <input type="text" name="" id="url" placeholder="URL da imagem">
-            <div class="label"><label>Resposta incorreta</label></div>
-            <input type="text" name="" id="incorrectAnswer" placeholder="Resposta incorreta 1">
-            <input type="text" name="" id="incorrectUrl" placeholder="URL da imagem 1">
-            <br>
-            <input type="text" name="" id="incorrectAnswer" placeholder="Resposta incorreta 2">
-            <input type="text" name="" id="incorrectUrl" placeholder="URL da imagem 2">
-            <br>
-            <input type="text" name="" id="incorrectAnswer" placeholder="Resposta incorreta 3">
-            <input type="text" name="" id="incorrectUrl" placeholder="URL da imagem 3">
+        questionsFormQuestions.innerHTML  += ` 
+        <div class="questions" >
+            <div class="questionTitle" onclick="closeOrOpenQuestions(this)">
+                <div class="label"><label> Pergunta ${i}</label></div>
+                <img src="./images/editIcon.png" alt="">
+            </div>
+            <div class="questionWrapper hidden">
+                <input type="text" name="" id="questionText" placeholder="Text da pergunta">
+                <input type="text" name="" id="questionBackgroundColor" placeholder="Cor de fundo da pergunta">
+                <div class="label"><label> Resposta correta</label></div>
+                <input type="text" name="" id="rightAnswer" placeholder="Resposta correta">
+                <input type="text" name="" id="url" placeholder="URL da imagem">
+                <div class="label"><label>Resposta incorreta</label></div>
+                <input type="text" name="" id="incorrectAnswer" placeholder="Resposta incorreta 1">
+                <input type="text" name="" id="incorrectUrl" placeholder="URL da imagem 1">
+                <br>
+                <input type="text" name="" id="incorrectAnswer" placeholder="Resposta incorreta 2">
+                <input type="text" name="" id="incorrectUrl" placeholder="URL da imagem 2">
+                <br>
+                <input type="text" name="" id="incorrectAnswer" placeholder="Resposta incorreta 3">
+                <input type="text" name="" id="incorrectUrl" placeholder="URL da imagem 3">
         </div>`
     }
 
@@ -225,58 +238,56 @@ form2.addEventListener('submit', (e) => {
    const incorrectAnswer = document.querySelectorAll('#incorrectAnswer')
    console.log(incorrectAnswer)
    for (let i = 0; i < incorrectAnswer.length; i++) {
-        if(incorrectAnswer[i].value === '') {
-            alert(`O texto da resposta incorreta ${i+1} está vazio! Adicione o texto.`)
+        if(incorrectAnswer[i].value === '' && i === 0 || incorrectAnswer[i].value === '' && i === 3 ||incorrectAnswer[i].value === '' && i === 6) {
+
+            if ( i > 2) {
+                alert(`O texto da resposta incorreta ${i-2} da pergunta 2 está vazio! Adicione o texto.`)
+                incorrectUrl[i].value = ""
+                return
+            } else if ( i > 5) {
+                alert(`O texto da resposta incorreta ${i-2} da pergunta 3 está vazio! Adicione o texto.`)
+                incorrectUrl[i].value = ""
+                return
+            } else if ( i > 8) {
+                alert(`O texto da resposta incorreta ${i-2} da pergunta 4 está vazio! Adicione o texto.`)
+                incorrectUrl[i].value = ""
+                return
+            }
+
+            alert(`O texto da resposta incorreta ${i+1} da pergunta 1 está vazio! Adicione o texto.`)
             return
-        } else {
+        } else  {
             incorrectAnswer1 = true
         }
    }
 
    const incorrectUrl = document.querySelectorAll('#incorrectUrl')
-   let count = 1;
+   
    
    for (let i = 0; i < incorrectUrl.length; i++) {
-        if(!isValidUrl(incorrectUrl[i].value)) {
-            if (i <= 2) {     
-                count = i
-                if (count > 3) {
-                    count = 1
-                }       
-                alert(`a URL da resposta incorreta ${i+1} da pergunta 1 é inválido`)
-                count++
-                
-            } else if ( i > 2 && i <= 5) {
-                if (count > 3) {
-                    count = 1
-                }
-                
-                alert(`a URL da resposta incorreta ${count} da pergunta 2 é inválido`)
-                count++
-            } else if (i > 5 && i <= 8 ) {
-                if (count > 3) {
-                    count = 1
-                }
-                
-                alert(`a URL da resposta incorreta ${count} da pergunta 3 é inválido`)
-                count++
-            } else if (i > 8 && i <= 11) {
-                if (count > 3) {
-                    count = 1
-                }
-                alert(`a URL da resposta incorreta ${count} da pergunta 4 é inválido`)
-                count++
-            } else if (i > 11 && i <= 14) {
-                if (count > 3) {
-                    count = 1
-                }
-                alert(`a URL da resposta incorreta ${count} da pergunta 5 é inválido`)
-                count++
-
-            } 
+        if(!isValidUrl(incorrectUrl[i].value) && i === 0 || !isValidUrl(incorrectUrl[i].value) && i === 3 || !isValidUrl(incorrectUrl[i].value) && i === 6) {
+            if ( i > 2) {
+                alert(`A url da resposta incorreta ${i-2} da pergunta 2 é inválida`)
+                incorrectUrl[i].value = ""
+                return
+            } else if ( i > 5) {
+                alert(`A url da resposta incorreta ${i-2} da pergunta 3 é inválida`)
+                incorrectUrl[i].value = ""
+                return
+            } else if ( i > 8) {
+                alert(`A url da resposta incorreta ${i-2} da pergunta 4 é inválida`)
+                incorrectUrl[i].value = ""
+                return
+            }
+            
+            alert(`A url da resposta incorreta ${i+1} da pergunta 1 é inválida`)
             incorrectUrl[i].value = ""
             return
-        }else {
+        } else if(isValidUrl(incorrectUrl[i].value) && i === 0) {
+            incorrectUrl1 = true
+        }
+        else if (!isValidUrl(incorrectUrl[i].value) && i === 1 || !isValidUrl(incorrectUrl[i].value) && i === 2) {
+            
             incorrectUrl1 = true
         }
     }
@@ -303,14 +314,30 @@ form2.addEventListener('submit', (e) => {
                 answer1.push(resp1)
 
                 for (let j = 0; j < 3; j++) {
-                    resp1 = 
-                    {
-                        text: incorrectAnswer[j].value,
-                        image: incorrectUrl[j].value,
-                        isCorrectAnswer: false
+                    if(j === 0) {
+                            resp1 = 
+                              {
+                                  text: incorrectAnswer[j].value,
+                                  image: incorrectUrl[j].value,
+                                  isCorrectAnswer: false
+                                  
+                              }
+                        answer1.push(resp1)
                         
+                    } else if ( j=== 1 || j === 2) {
+                        if(incorrectAnswer[j].value !== '' && incorrectUrl[j].value !== '') {
+                            resp1 = 
+                              {
+                                  text: incorrectAnswer[j].value,
+                                  image: incorrectUrl[j].value,
+                                  isCorrectAnswer: false
+                                  
+                              }
+                              answer1.push(resp1)
+
+                        } 
                     }
-                    answer1.push(resp1)
+                    
 
                  }
 
@@ -325,14 +352,33 @@ form2.addEventListener('submit', (e) => {
             answer2.push(resp2)
 
             for (let j = 3; j < 6; j++) {
-                resp2 = 
-                {
-                    text: incorrectAnswer[j].value,
-                    image: incorrectUrl[j].value,
-                    isCorrectAnswer: false
-                    
-                }
-                answer2.push(resp2)
+                if(j === 3) {
+                    resp2 = 
+                      {
+                          text: incorrectAnswer[j].value,
+                          image: incorrectUrl[j].value,
+                          isCorrectAnswer: false
+                          
+                      }
+                      answer2.push(resp2)
+                
+                 } else if ( j=== 4 || j === 5) {
+                    if(incorrectAnswer[j].value !== '' && incorrectUrl[j].value !== '') {
+                        resp2 = 
+                        {
+                            text: incorrectAnswer[j].value,
+                            image: incorrectUrl[j].value,
+                            isCorrectAnswer: false
+                            
+                        }
+                        answer2.push(resp2)
+                    } 
+                 }
+
+
+
+
+                
 
              }
 
@@ -346,14 +392,29 @@ form2.addEventListener('submit', (e) => {
             answer3.push(resp3)
 
             for (let j = 6; j < 9; j++) {
-                resp3 = 
-                {
-                    text: incorrectAnswer[j].value,
-                    image: incorrectUrl[j].value,
-                    isCorrectAnswer: false
-                    
-                }
+                if (j === 6) {
+                    resp3 = 
+                    {
+                        text: incorrectAnswer[j].value,
+                        image: incorrectUrl[j].value,
+                        isCorrectAnswer: false
+
+                    }
                 answer3.push(resp3)
+                } else if (j === 7 || j === 8 ){
+                    if(incorrectAnswer[j].value !== '' && incorrectUrl[j].value !== '') {
+                        resp3 = 
+                        {
+                            text: incorrectAnswer[j].value,
+                            image: incorrectUrl[j].value,
+                            isCorrectAnswer: false
+                            
+                        }
+                        answer3.push(resp3)
+                    } 
+
+                }
+                
 
              }
         }
@@ -365,25 +426,43 @@ form2.addEventListener('submit', (e) => {
             } 
             answer4.push(resp4)
 
-            for (let j = 9; j < 11; j++) {
-                resp4 = 
-                {
-                    text: incorrectAnswer[j].value,
-                    image: incorrectUrl[j].value,
-                    isCorrectAnswer: false
+            for (let j = 9; j < 12; j++) {
+                if( j === 9 ) {
+                    resp4 = 
+                    {
+                        text: incorrectAnswer[j].value,
+                        image: incorrectUrl[j].value,
+                        isCorrectAnswer: false
+                        
+                    }
+                    answer4.push(resp4)
+
+                } else if (j === 10 || j === 11) {
+                    if(incorrectAnswer[j].value !== '' && incorrectUrl[j].value !== '') {
+                        resp4 = 
+                        {
+                            text: incorrectAnswer[j].value,
+                            image: incorrectUrl[j].value,
+                            isCorrectAnswer: false
+                            
+                        }
+                        answer4.push(resp4)
+                    } 
                     
                 }
-                answer4.push(resp4)
+               
 
              }
         }
-        console.log(answer1)
-
+        
         //respostasIncorretas.push(answers)
 
-        console.log(answer2)
-        console.log(answer3)
     }   
+    console.log(answer1)
+    console.log(answer2)
+    console.log(answer3)
+
+    
 
 
     
@@ -643,3 +722,41 @@ function addButton(){
 
 
 
+
+
+/* if (i <= 2) {     
+                count = i
+                if (count > 3) {
+                    count = 1
+                }       
+                alert(`a URL da resposta incorreta ${i+1} da pergunta 1 é inválido`)
+                count++
+                
+            } else if ( i > 2 && i <= 5) {
+                if (count > 3) {
+                    count = 1
+                }
+                
+                alert(`a URL da resposta incorreta ${count} da pergunta 2 é inválido`)
+                count++
+            } else if (i > 5 && i <= 8 ) {
+                if (count > 3) {
+                    count = 1
+                }
+                
+                alert(`a URL da resposta incorreta ${count} da pergunta 3 é inválido`)
+                count++
+            } else if (i > 8 && i <= 11) {
+                if (count > 3) {
+                    count = 1
+                }
+                alert(`a URL da resposta incorreta ${count} da pergunta 4 é inválido`)
+                count++
+            } else if (i > 11 && i <= 14) {
+                if (count > 3) {
+                    count = 1
+                }
+                alert(`a URL da resposta incorreta ${count} da pergunta 5 é inválido`)
+                count++
+
+            }  */
