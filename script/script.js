@@ -573,7 +573,7 @@ form3.addEventListener('submit', (e) => {
         
     }
 
-    let levels = []
+    
     
 
     for(let i = 0; i < levelTitle.length; i++) {
@@ -832,6 +832,7 @@ function getID(elemento){
     const selectedQuizzID = elemento.id;
     let promise = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${selectedQuizzID}`);
     promise.then(loadQuizzPage2)
+   
 }
 //js tela1 fim
 
@@ -841,8 +842,13 @@ function embaralhar() {
 	return Math.random() - 0.5; 
 }
 
+let acabou = false
+
+let resp =''
 
 function loadQuizzPage2(resposta){
+    resp = resposta
+    console.log(resposta)
     let tela1 = document.querySelector(".tela1");
     let tela2 = document.querySelector(".tela2");
     tela1.classList.add("hidden");
@@ -863,14 +869,14 @@ function loadQuizzPage2(resposta){
         let answerArr = quizzQuestions[i].answers;
         answerArr =answerArr.sort(embaralhar);
         textQuesContainer+=
-            `<div class="ques-container">
+            `<div class="ques-container" >
             <div class="ques-header" style="background-color:${quizzQuestions[i].color}">
                 <div class="ques-title">${quizzQuestions[i].title}</div>
             </div>
             <div class="options-container">`
         for (let j = 0; j < answerArr.length; j++){
             textHTML+=
-            `<div class="option-box ${answerArr[j].isCorrectAnswer}">
+            `<div class="option-box ${answerArr[j].isCorrectAnswer}" onclick = "chooseAwnser(this)" >
                 <img src="${answerArr[j].image}" alt="" class="option-img">
                 <div class="option-text">${answerArr[j].text}</div>
             </div>
@@ -879,6 +885,67 @@ function loadQuizzPage2(resposta){
         textQuesContainer+=textHTML+`</div></div>`;
         quesContainer.innerHTML += textQuesContainer;
     }
+
+    
+}
+
+let porcentagemAcerto;
+function chooseAwnser(answer) {
+    
+    
+    answer.classList.add('clicado')
+
+    let pai = answer.parentNode;   
+    let children = pai.children;
+    for (let i = 0; i < children.length; i++) {
+        children[i].onclick = null
+
+    }
+    console.log(children)
+    console.log(children.length)
+
+    for ( let i = 0; i < children.length; i++) {
+        if(children[i].classList.contains('true')) {
+            children[i].classList.add('correct-answer')
+        } else {
+            children[i].classList.add('incorrect-answer')
+        }
+        if(children[i].classList.contains('clicado')) {
+
+        } else {
+            children[i].classList.add('opacity')
+        }
+    }
+   
+
+    let acertos = 0
+    const options = Array.from(document.querySelectorAll('.option-box'))
+    const perguntas = document.querySelectorAll('.ques-container')
+
+ acabou =  (options.every((item) => item.classList.contains('clicado') || item.classList.contains('opacity'))) 
+  console.log(acabou)
+  if(acabou) {
+    for(let i = 0; i < options.length; i++) {
+        if ( options[i].classList.contains('clicado') && options[i].classList.contains('true')) {
+            acertos++
+        } 
+    }
+  }
+
+  porcentagemAcerto = Number(Math.ceil((acertos/perguntas.length)*100))
+  console.log(porcentagemAcerto)
+
+  if(pai.parentNode.nextElementSibling) {
+      setTimeout(() => {
+          pai.parentNode.nextElementSibling.scrollIntoView({ block: 'center',  behavior: 'smooth' })
+      }, 2000)
+          
+  }
+  
+  if( acabou === true) {
+    finalResult();
+  }
+  
 }
 
 function answerCorrection(element) {
@@ -895,6 +962,46 @@ function randomizer() {  //responsável por deixar a ordem das cartas aleatória
 	return Math.random() - 0.5; 
 }
 
+
+function finalResult() {
+    const resultContainer = document.querySelector('.result-container')
+    console.log(resp.data.levels)
+    const levelsArr= resp.data.levels
+    console.log(levelsArr[0].minValue)
+        
+    for( let i = 0 ; i < levelsArr.length; i++) {   
+        console.log(levelsArr[i].minValue)
+        if(porcentagemAcerto > levelsArr[i].minValue) {
+            resultContainer.innerHTML = 
+            `
+                <div class="result-header">
+                    <div class="result">${porcentagemAcerto}% de acerto: ${levelsArr[i].title}</div>
+                    </div>
+            
+                    <div class="result-flair">
+                        <img class="img-result" src="${levelsArr[i].image}">
+                        <div class="result-text">
+                        ${levelsArr[i].text}
+                        </div>
+                </div>
+            `
+            
+        } 
+        
+       
+    }
+    
+    
+    
+
+   
+
+
+
+    
+
+    
+}
 
 
 function returnHome() {
