@@ -779,10 +779,8 @@ function userQuizz(){
 
 function displayUserQuizz(resposta){
   let tela1 = document.querySelector(".tela1");
-  let tela2 = document.querySelector(".tela2");
   let tela3 = document.querySelector(".tela3");
   tela1.classList.remove("hidden");
-  tela2.classList.add("hidden");
   tela3.classList.add("hidden");
     let IDarr = localStorage.getItem("id");
     console.log(IDarr);
@@ -831,55 +829,65 @@ function getID(elemento){
     console.log(elemento.id);
     const selectedQuizzID = elemento.id;
     let promise = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${selectedQuizzID}`);
-    promise.then(loadQuizzPage2)
+    promise.then(loadQuizzPage)
 }
+
 //js tela1 fim
 
 
 //js tela2 início
-function embaralhar() { 
-	return Math.random() - 0.5; 
-}
+quizzAnswers = [];
+answerShuffle = [];
 
-
-function loadQuizzPage2(resposta){
+function loadQuizzPage(resposta) {
     let tela1 = document.querySelector(".tela1");
     let tela2 = document.querySelector(".tela2");
     tela1.classList.add("hidden");
     tela2.classList.remove("hidden");
+    
+    content = resposta.data;
+    quizzQuestions = content.questions;
 
-    let content = resposta.data;
-    let quizzQuestions = content.questions;
-
+    for (let i = 0; i < quizzQuestions.length; i++){
+        quizzAnswers.push((quizzQuestions[i].answers));
+    }
+    
     let headerImage = document.querySelector('.quiz-header');
     let headerTitle = document.querySelector('.quiz-title');
-    let quesContainer = document.querySelector('.tela2');
+    let questionQuizz = document.querySelector('.ques-container');
     headerImage.style.background = `linear-gradient(0deg, rgba(0, 0, 0, 0.57), rgba(0, 0, 0, 0.57)), url(${content.image})`;
     headerTitle.innerHTML = `${content.title}`
 
     for (let i = 0; i < quizzQuestions.length; i++){
-        let textQuesContainer="";
-        let textHTML="";
-        let answerArr = quizzQuestions[i].answers;
-        answerArr =answerArr.sort(embaralhar);
-        textQuesContainer+=
-            `<div class="ques-container">
-            <div class="ques-header" style="background-color:${quizzQuestions[i].color}">
+        questionQuizz.innerHTML+=
+            `<div class="ques-header" style="background-color:${quizzQuestions[i].color}">
                 <div class="ques-title">${quizzQuestions[i].title}</div>
-            </div>
-            <div class="options-container">`
-        for (let j = 0; j < answerArr.length; j++){
-            textHTML+=
-            `<div class="option-box ${answerArr[j].isCorrectAnswer}">
-                <img src="${answerArr[j].image}" alt="" class="option-img">
-                <div class="option-text">${answerArr[j].text}</div>
-            </div>
-            `
+            </div>`
+
+        ans = quizzAnswers[i];
+
+        for (let j = 0; j < ans.length; j++) {
+            answerShuffle.push(quizzQuestions[i].answers[j]);
+            answerShuffle.sort(randomizer);
+            questionQuizz.innerHTML+=
+
+                `<div class="ans-options">
+                
+                    <div onclick="answerCorrection(this, ${ans[i].isCorrectAnswer})" class="answer">
+                        <img src="${quizzQuestions[i].answers[j].image}">
+                        ${quizzQuestions[i].answers[j].text}
+                    </div>
+
+                </div>`
+
+            
         }
-        textQuesContainer+=textHTML+`</div></div>`;
-        quesContainer.innerHTML += textQuesContainer;
+
     }
+    console.log(questionQuizz);
 }
+
+
 
 function answerCorrection(element) {
     selectedAnswer = element;

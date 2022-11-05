@@ -376,6 +376,7 @@ all-quizz{
   cursor: pointer;
 }
 
+
 .quizz-title{
   color: white;
   word-wrap: break-word;
@@ -410,95 +411,32 @@ all-quizz{
 /* Início tela 2 */
 .tela2 {
   display: flex;
-  word-wrap: break-word;
   margin: auto;
   flex-direction: column;
-  width: 100%;
-  background-color: #FAFAFA;
+  width: 1440px;
 }
 .quiz-header {
   width: 100%;
-  min-height: 227px;
+  height: 227px;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.57), rgba(0, 0, 0, 0.57)), url(./images/Rectangle42.png);
   margin-top: 69px;
-  margin-bottom: 42px;
 }
 .quiz-title {
   font-family: "Roboto";
   font-size: 39px;
-  font-weight: 400;
+  font-weight: 200;
   color: #FFFFFF;
   text-align: center;
   padding-top: 90px;
 }
-
 .ques-container {
   margin: auto;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  margin-bottom: 42px;
+  padding-top: 24px;
+  margin-top: 42px;
   width: 759px;
-  background-color: white;
+  height: 676px;
+  background-color: #FFFFFF;
 }
-
-.ques-header {
-  width: 93%;
-  margin-top: 28px;
-  margin-bottom: 20px;
-  height: 120px;
-  background-color: #434ca0;
-}
-
-.ques-title {
-  color: #fefeff;
-  text-align: center;
-  padding-top: 50px;
-  font-size: 23px;
-  font-weight: 700;
-}
-
-.options-container{
-  width: 93%;
-  margin-bottom: 36px;
-  justify-content: space-between;
-  display: grid;
-  grid-template-columns: 337px 337px;
-  grid-template-rows: auto;
-  grid-column-gap: 20px;
-  grid-row-gap: 20px;
-}
-
-.option-box{
-  width: 337px;
-}
-.opacity{
-  opacity: 0.3;
-}
-
-.correct-answer{
-  color: #009C22;
-}
-
-.incorrect-answer{
-  color: #FF4B4B;
-}
-  
-
-.option-text{
-  font-size: 20px;
-  font-weight: 700;
-  text-align: left;
-}
-
-.option-img{
-  width: 100%;
-  object-fit: cover;
-}
-
-
 .result-container {
   margin: auto;
   padding-top: 24px;
@@ -507,14 +445,25 @@ all-quizz{
   height: 430px;
   background-color: #FFFFFF;
 }
-
+.ques-header {
+  width: 93%;
+  margin: auto;
+  height: 120px;
+  background-color: #434ca0;
+}
 .result-header {
   width: 95%;
   margin: auto;
   height: 100px;
   background-color: red;
 }
-
+.ques-title {
+  color: #fefeff;
+  text-align: center;
+  padding-top: 50px;
+  font-size: 20px;
+  font-weight: 600;
+}
 .result {
   color: #fefeff;
   text-align: center;
