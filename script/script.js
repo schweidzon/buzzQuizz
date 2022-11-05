@@ -724,7 +724,7 @@ promessa.then(processarResposta);
 
 
 function processarResposta(resposta) {
-  
+
   let ul_list = document.querySelectorAll(".quizz-container");
   let ul = ul_list[ul_list.length-1];
   ul.innerHTML ="";
@@ -823,16 +823,86 @@ function displayUserQuizz(resposta){
     console.log(localStorage.getItem("id"));
 }
 
+let selectedQuizzID = '';
 
 function getID(elemento){
     console.log(elemento.id);
+    const selectedQuizzID = elemento.id;
+    let promise = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${selectedQuizzID}`);
+    promise.then(loadQuizzPage)
+}
+
+//js tela1 fim
+
+
+//js tela2 início
+quizzAnswers = [];
+answerShuffle = [];
+
+function loadQuizzPage(resposta) {
     let tela1 = document.querySelector(".tela1");
     let tela2 = document.querySelector(".tela2");
     tela1.classList.add("hidden");
     tela2.classList.remove("hidden");
+    
+    content = resposta.data;
+    quizzQuestions = content.questions;
+
+    for (let i = 0; i < quizzQuestions.length; i++){
+        quizzAnswers.push((quizzQuestions[i].answers));
+    }
+    
+    let headerImage = document.querySelector('.quiz-header');
+    let headerTitle = document.querySelector('.quiz-title');
+    let questionQuizz = document.querySelector('.ques-container');
+    headerImage.style.background = `linear-gradient(0deg, rgba(0, 0, 0, 0.57), rgba(0, 0, 0, 0.57)), url(${content.image})`;
+    headerTitle.innerHTML = `${content.title}`
+
+    for (let i = 0; i < quizzQuestions.length; i++){
+        questionQuizz.innerHTML+=
+            `<div class="ques-header" style="background-color:${quizzQuestions[i].color}">
+                <div class="ques-title">${quizzQuestions[i].title}</div>
+            </div>`
+
+        ans = quizzAnswers[i];
+
+        for (let j = 0; j < ans.length; j++) {
+            answerShuffle.push(quizzQuestions[i].answers[j]);
+            answerShuffle.sort(randomizer);
+            questionQuizz.innerHTML+=
+
+                `<div class="ans-options">
+                
+                    <div onclick="answerCorrection(this, ${ans[i].isCorrectAnswer})" class="answer">
+                        <img src="${quizzQuestions[i].answers[j].image}">
+                        ${quizzQuestions[i].answers[j].text}
+                    </div>
+
+                </div>`
+
+            
+        }
+
+    }
+    console.log(questionQuizz);
 }
 
-//js tela1 fim
+
+
+function answerCorrection(element) {
+    selectedAnswer = element;
+
+    if (element === true) {
+        element.classList.add('user-correct');
+    } else {
+        element.classList.add('correct');
+    }
+}
+
+function randomizer() {  //responsável por deixar a ordem das cartas aleatória
+	return Math.random() - 0.5; 
+}
+
 
 
 function returnHome() {
