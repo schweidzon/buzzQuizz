@@ -82,15 +82,16 @@ form1.addEventListener('submit', (e) => {
         return
     }
 
-    if (questionsQuantityValue < 3 ) {
-        alert('O número de preguntas deve ser no mínimo 3')
+    if (questionsQuantityValue < 3 || isNaN(questionsQuantityValue)) {
+        alert('O número de preguntas deve ser um número e no mínimo 3')
         questionsQuantity.value = ""
         return
 
     }
 
-    if (quizzLevelValue < 2 ) {
-        alert('O número de níveis deve ser no mínimo 2')
+    if (quizzLevelValue < 2 || isNaN(quizzLevelValue)) {
+        alert('O número de níveis deve ser um e no mínimo 2')
+         
         quizzLevel.value = ""
         return
 
