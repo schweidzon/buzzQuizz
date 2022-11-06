@@ -972,7 +972,19 @@ function finalResult() {
                         </div>
                 </div>
             `
-        } 
+        } else {
+            resultContainer.innerHTML = 
+            `
+                <div class="result-header">
+                    <div class="result">${porcentagemAcerto}% de acerto: Você não atingiu a pontuação mínima de nenhum nível</div>
+                    </div>
+                    <div class="result-flair">
+                        <div class="result-text">
+                        Refaça o quizz ou volte para a página inicial
+                        </div>
+                </div>
+            `
+        }
        
     }
     
