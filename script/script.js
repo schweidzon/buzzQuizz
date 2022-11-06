@@ -697,7 +697,10 @@ function OpenQuizz(response) {
       
         let id = response.data[i].id
         if (localStorageIds[localStorageIds.length -1] === id) {
-            alert(`abrindo quizz com id ${id}`)
+            globalID = id;
+            let cont4=document.querySelector(".container4");
+            cont4.classList.add("hidden");
+            redoQuizz();
         }
     }
 
@@ -712,6 +715,7 @@ function backToTela1(){
 }
 
 function showTela1(){
+    tela1.scrollIntoView();
     userQuizz();
     const promessa = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes');
     promessa.then(processarResposta);
@@ -770,6 +774,7 @@ function renderUserQuizz(arg1, arg2,arg3){
 function addButton(){
     tela1.classList.add("hidden");
     tela3.classList.remove("hidden");
+    container1.classList.remove("hidden");
 }
 
 function userQuizz(){
@@ -829,6 +834,7 @@ function displayUserQuizz(resposta){
 let selectedQuizzID = '';
 
 function getID(elemento){
+    globalID = elemento.id;
     console.log(elemento.id);
     const selectedQuizzID = elemento.id;
     let promise = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${selectedQuizzID}`);
@@ -852,15 +858,19 @@ function loadQuizzPage2(resposta){
     console.log(resposta)
     let tela1 = document.querySelector(".tela1");
     let tela2 = document.querySelector(".tela2");
+    let tela3 = document.querySelector(".tela3");
     tela1.classList.add("hidden");
     tela2.classList.remove("hidden");
+    tela3.classList.remove("hidden");
 
     let content = resposta.data;
     let quizzQuestions = content.questions;
 
     let headerImage = document.querySelector('.quiz-header');
     let headerTitle = document.querySelector('.quiz-title');
-    let quesContainer = document.querySelector('.tela2');
+    headerTitle.scrollIntoView();
+    let quesContainer = document.querySelector('.tela2-container');
+    quesContainer.innerHTML="";
     headerImage.style.background = `linear-gradient(0deg, rgba(0, 0, 0, 0.57), rgba(0, 0, 0, 0.57)), url(${content.image})`;
     headerTitle.innerHTML = `${content.title}`
 
@@ -965,6 +975,8 @@ function randomizer() {  //responsável por deixar a ordem das cartas aleatória
 
 
 function finalResult() {
+    let divfinal = document.querySelector(".final-quizz");
+    divfinal.classList.remove("hidden");
     const resultContainer = document.querySelector('.result-container')
     console.log(resp.data.levels)
     const levelsArr= resp.data.levels
@@ -986,28 +998,37 @@ function finalResult() {
                         </div>
                 </div>
             `
-            
         } 
-        
        
     }
     
-    
-    
+}
 
-   
-
-
-
-    
-
-    
+let globalID;
+function redoQuizz(){
+    let divfinal = document.querySelector(".final-quizz");
+    divfinal.classList.add("hidden");
+    let promise = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${globalID}`);
+    promise.then(loadQuizzPage2)
 }
 
 
+function returnHome31(){
+    let tela1 = document.querySelector(".tela1");
+    tela1.scrollIntoView();
+    let tela3 = document.querySelector(".tela3");
+    tela3.classList.add("hidden");
+    tela1.classList.remove("hidden");
+    showTela1();
+}
+
 function returnHome() {
     let tela1 = document.querySelector(".tela1");
+    tela1.scrollIntoView();
     let tela2 = document.querySelector(".tela2");
+    let divfinal = document.querySelector(".final-quizz");
+    divfinal.classList.add("hidden");
     tela2.classList.add("hidden");
     tela1.classList.remove("hidden");
+    showTela1();
 }

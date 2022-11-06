@@ -48,6 +48,7 @@
         <div class="quiz-header">
             <div class="quiz-title"></div>
         </div>
+        <div class="tela2-container">
         <!--
         <div class="ques-container">
             <div class="ques-header">
@@ -68,21 +69,22 @@
                 </div> 
             </div>
         </div>   -->
-         <div class="result-container">
-           
-
         </div>
 
+        <div class="final-quizz hidden">
+        <div class="result-container">
+        </div>
         <div class="final-options">
-            <button class="final-button">Reiniciar Quizz</button>
+            <button class="final-button" onclick="redoQuizz()">Reiniciar Quizz</button>
             <h1 onclick="returnHome()">Voltar para home</h1>
+        </div>
         </div>
 
     </div>
     
     
     <div class="tela3 hidden">
-        <div class="container1 ">
+        <div class="container1 hidden">
             <header>
                 <h1>BuzzQuizz</h1>
             </header>
@@ -147,7 +149,7 @@
                     </div>
                     <div class="buttons">
                         <button onclick = "openCreatedQuizz()" >Acessar Quizz</button>
-                        <p onclick="returnHome()" >Voltar para home</p>
+                        <p onclick="returnHome31()" >Voltar para home</p>
                     </div>
                 </main>
             </diz>
