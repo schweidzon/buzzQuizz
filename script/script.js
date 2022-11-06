@@ -945,6 +945,7 @@ function chooseAwnser(answer) {
 
   porcentagemAcerto = Number(Math.ceil((acertos/perguntas.length)*100))
   console.log(porcentagemAcerto)
+  console.log(pai.parentNode.parentNode.nextElementSibling)
 
   if(pai.parentNode.nextElementSibling) {
       setTimeout(() => {
@@ -954,7 +955,11 @@ function chooseAwnser(answer) {
   }
   
   if( acabou === true) {
-    finalResult();
+      finalResult();
+      setTimeout(() => {
+
+        pai.parentNode.parentNode.nextElementSibling.scrollIntoView({ block: 'center',  behavior: 'smooth' })
+    }, 2000)
   }
   
 }
