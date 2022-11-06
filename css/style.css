@@ -530,6 +530,8 @@ all-quizz{
   font-size: 16px;
   font-weight: 700;
   margin: 21px 0 27px 20px;
+  word-break: break-all;
+
 }
 .ans-options {
   display: flex;
