@@ -579,45 +579,14 @@ form3.addEventListener('submit', (e) => {
 
     for(let i = 0; i < levelTitle.length; i++) {
         console.log(levelTitle[i].value)
-        if ( i=== 0) {
-            nivelObj = {
-                title: levelTitle[i].value,
-                 image: levelUrl[i].value,
-                  text: levelDescription[i].value,
-                   minValue: min[i].value 
-            }
-            levels.push(nivelObj)
-        }  
-        if (i === 1) {
-            nivelObj = {
-                title: levelTitle[i].value,
-                 image: levelUrl[i].value,
-                  text: levelDescription[i].value,
-                   minValue: min[i].value 
-            }
-            levels.push(nivelObj)
-
+        nivelObj = {
+            title: levelTitle[i].value,
+             image: levelUrl[i].value,
+              text: levelDescription[i].value,
+               minValue: min[i].value 
         }
-        if ( i === 2) {
-            nivelObj = {
-                title: levelTitle[i].value,
-                 image: levelUrl[i].value,
-                  text: levelDescription[i].value,
-                   minValue: min[i].value 
-            }
-            levels.push(nivelObj)
-
-        }
-        if ( i === 3)  {
-            nivelObj = {
-                title: levelTitle[i].value,
-                 image: levelUrl[i].value,
-                  text: levelDescription[i].value,
-                   minValue: min[i].value 
-            }
-            levels.push(nivelObj)
-
-        }
+        levels.push(nivelObj)
+        
 
     }
     
@@ -959,7 +928,7 @@ function chooseAwnser(answer) {
       setTimeout(() => {
 
         pai.parentNode.parentNode.nextElementSibling.scrollIntoView({ block: 'center',  behavior: 'smooth' })
-    }, 2000)
+    },2000)
   }
   
 }
