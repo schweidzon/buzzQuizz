@@ -1006,14 +1006,16 @@ function finalResult() {
         } else {
             resultContainer.innerHTML = 
             `
-                <div class="result-header">
-                    <div class="result">${porcentagemAcerto}% de acerto: Você não atingiu a pontuação mínima de nenhum nível</div>
-                    </div>
-                    <div class="result-flair">
-                        <div class="result-text">
-                        Refaça o quizz ou volte para a página inicial
-                        </div>
+            <div class="result-header">
+                <div class="result">${porcentagemAcerto}% de acerto: Você não atingiu a pontuação mínima de um nível</div>
                 </div>
+        
+                <div class="result-flair">
+                    <img class="img-result" src="https://www.psicologoeterapia.com.br/wp-content/uploads/como-lidar-com-o-fracasso-2-1024x683.jpg">
+                    <div class="result-text">
+                    Refaça o quizz ou volte para a página inicial
+                    </div>
+            </div>
             `
         }
        
