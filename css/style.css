@@ -238,7 +238,7 @@ textarea {
 }
 
 .buttons p {
-    font-size: 18px;
+    font-size: 21px;
     color:#818181 ;
     cursor: pointer;
 }
@@ -247,13 +247,6 @@ textarea {
 
 @media (max-width:400px) {
 
-    .title  {
-        margin-top: 106px;
-        margin-bottom: 29px;
-    }
-    .basicInfo button {
-        margin-top: 35px;
-    }
 }
 
 /* Fim  tela 3 */
@@ -812,6 +805,28 @@ all-quizz{
   .final-options h1 {
     font-size: 18px;
   }
+
+
+    
+  .title  {
+      margin-top: 106px;
+      margin-bottom: 29px;
+      font-size: 20px;
+  }
+  .basicInfo button {
+      margin-top: 35px;
+      width: 324px;
+      font-size: 18px;
+  }
+  .buttons p {
+    font-size: 18px;
+    
+  }
+
+  .container4 button {
+   font-size: 18px
+  } 
+  
 }
 
 @media (max-width: 740px) {
