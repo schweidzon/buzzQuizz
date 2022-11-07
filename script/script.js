@@ -968,7 +968,9 @@ function finalResult() {
                     <div class="result-flair">
                         <img class="img-result" src="${levelsArr[i].image}">
                         <div class="result-text">
+                        <p>
                         ${levelsArr[i].text}
+                        </p>
                         </div>
                 </div>
             `
@@ -982,7 +984,9 @@ function finalResult() {
                 <div class="result-flair">
                     <img class="img-result" src="https://www.psicologoeterapia.com.br/wp-content/uploads/como-lidar-com-o-fracasso-2-1024x683.jpg">
                     <div class="result-text">
+                    <p>
                     Refaça o quizz ou volte para a página inicial
+                    </p>
                     </div>
             </div>
             `
