@@ -713,7 +713,7 @@ all-quizz{
     width: 100%;
     justify-content: center;
     padding-right: 10px;
-    padding-left: 6px;
+    padding-left: 10px;
     padding-bottom: 23px;
     margin-top: 24px!important;
     margin-bottom: 28px!important;
@@ -725,7 +725,7 @@ all-quizz{
 
   .options-container {
     margin-left: 0;
-    justify-content: center;
+    
     width: 95.8%;
     gap: 14px;
     margin: auto;
