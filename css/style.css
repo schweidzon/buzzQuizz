@@ -512,6 +512,7 @@ all-quizz{
   font-size: 23px;
   line-height: 27px;
   color: #FFFFFF;
+  word-break: break-all;
   
 
 }
@@ -678,11 +679,13 @@ all-quizz{
     font-weight: 400;
     font-size: 19px;
     line-height: 22px;
+    
   }
   .ques-header {
     width: 95.8%;
     height: 89px;
     margin-bottom: 9px;
+    padding: 10px;
   }
 
   .ques-title {
