@@ -493,6 +493,7 @@ all-quizz{
   background-color: white;
   margin-top: 48px!important;
   padding-top: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
   
 }
 
@@ -579,6 +580,8 @@ all-quizz{
   background-color: #FFFFFF;
   padding-top: 10px;
   
+  
+  
 }
 
 .result-header {
@@ -596,6 +599,7 @@ all-quizz{
   line-height: 27px;
   padding: 22px 20px 23px 22px;
   margin-bottom: 25px;
+  word-break: break-all;
 }
 
 .result-flair {
@@ -614,6 +618,8 @@ all-quizz{
   font-size: 19px;
   line-height: 25px;
   word-break: break-all;
+  color: #484848
+
 
 }
 
@@ -679,6 +685,7 @@ all-quizz{
     font-weight: 400;
     font-size: 19px;
     line-height: 22px;
+    padding:12px;
     
   }
   .ques-header {
@@ -693,16 +700,18 @@ all-quizz{
    font-size: 19px;
    line-height: 22px;
    padding: 15px;
+   
   }
 
   .ques-container {
     width: 100%;
     justify-content: center;
     padding-right: 10px;
-    padding-left: 10px;
+    padding-left: 6px;
     padding-bottom: 23px;
     margin-top: 24px!important;
     margin-bottom: 28px!important;
+   
    
     
     
@@ -728,25 +737,39 @@ all-quizz{
   }
 
   .final-quizz {
-    width: 95.8%;
+    width: 100%;
     padding: 0;
     justify-content: center;
+    margin-bottom: 20px;
+
   
+  }
+
+  .result-container {
+    padding: 10px;
+    margin-bottom: 20px;
+    
+    
   }
 
   .result-header {
     margin-bottom: 9px;
-    
+    padding: 10px;
+    font-size: 19px;
+  line-height: 22px;
   }
+  
  
 
   .result-flair {
     flex-direction: column;
+    
   }
 
   .result-flair img{
-    width: 95.8%;
+    width: 100%;
     height: 255px;
+    margin-bottom: 10px;
 
   }
 
@@ -756,6 +779,14 @@ all-quizz{
 
   .result-text {
     margin-bottom: 14px;
+    margin-left: 0;
+    
+   
+  }
+
+  .result-text p {
+    font-size: 17px;
+    line-height: 20px;
   }
 
   .option-text {
@@ -764,6 +795,16 @@ all-quizz{
     font-weight: 700;
     font-size: 13px;
     line-height: 15px;
+  }
+
+  .final-button  {
+    font-size: 19px;
+    width: 220px;
+    height: 44px;
+  }
+
+  .final-options h1 {
+    font-size: 18px;
   }
 }
 
