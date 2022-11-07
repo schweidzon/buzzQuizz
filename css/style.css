@@ -671,7 +671,7 @@ all-quizz{
   color: #FF4B4B;
 }
 
-@media (max-width:375px) {
+@media (max-width:400px) {
 
   .tela2 {
     width: 100vw;
